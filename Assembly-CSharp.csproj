@@ -50,13 +50,16 @@
   <ItemGroup>
     <Compile Include="Assets\ysy\attack_warning.cs" />
     <Compile Include="Assets\ysy\GameManager.cs" />
+    <Compile Include="Assets\ysy\PowerUpPickup.cs" />
     <Compile Include="Assets\ysy\powUpSpeed.cs" />
     <Compile Include="Assets\ysy\BIllboardOnlyY.cs" />
+    <Compile Include="Assets\ysy\powUpsOnHand.cs" />
     <Compile Include="Assets\nilsu\scripts-nil\ShipMovement.cs" />
     <Compile Include="Assets\ysy\worm_enemy.cs" />
     <Compile Include="Assets\ysy\enemy.cs" />
     <Compile Include="Assets\nilsu\scripts-nil\OceanChunkManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\ysy\shoot.cs" />
     <Compile Include="Assets\ysy\fish.cs" />
     <Compile Include="Assets\birdem\marketUI.cs" />
   </ItemGroup>

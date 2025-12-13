@@ -66,6 +66,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7946087576886125950, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4947579667297785859}
+    - targetCorrespondingSourceObject: {fileID: 6772738584248445317, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8221737152671111457}
   m_SourcePrefab: {fileID: 100100000, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
 --- !u!1 &6793530407499020542 stripped
 GameObject:
@@ -87,6 +90,7 @@ MonoBehaviour:
   ship: {fileID: 0}
   shipTag: ship
   moveSpeed: 3
+  chaseRange: 10
   stopDistance: 0.5
   lockY: 1
 --- !u!54 &4947579667297785859
@@ -116,3 +120,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &7925423572629058565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6772738584248445317, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
+  m_PrefabInstance: {fileID: 3459146475927903616}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8221737152671111457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925423572629058565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea598eee48504954a88ad5d52562b35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BillboardYOnly

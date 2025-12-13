@@ -3,9 +3,14 @@ using UnityEngine.InputSystem;
 
 public class ShipMovement : MonoBehaviour
 {
-    public float moveSpeed = 6f;
+    float moveSpeed;
     public float turnSpeed = 80f;
     public float fixedY = 0f;
+
+    void Start()
+    {
+        moveSpeed = GameManager.Instance.GetSpeed();
+    }
 
     void Update()
     {

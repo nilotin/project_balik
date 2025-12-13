@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1164995548017591202, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.08523
+      value: 10.15435
       objectReference: {fileID: 0}
     - target: {fileID: 1164995548017591202, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1164995548017591202, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.58573
+      value: -3.59134
       objectReference: {fileID: 0}
     - target: {fileID: 1164995548017591202, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695c6f32ed16937459f1301d404b970d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  col: {fileID: 2540330799442617603}
+  spriteObject: {fileID: 6638572860128480271}
 --- !u!54 &849296232772087739
 Rigidbody:
   m_ObjectHideFlags: 0

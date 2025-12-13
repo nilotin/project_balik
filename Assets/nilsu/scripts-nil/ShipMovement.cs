@@ -40,6 +40,7 @@ public class ShipMovement : MonoBehaviour
             if (Keyboard.current.aKey.isPressed) turnInput -= 1f;
             if (Keyboard.current.dKey.isPressed) turnInput += 1f;
         }
+        maxMoveSpeed = GameManager.Instance.GetSpeed();
 
         // Eğer maxMoveSpeed 0 ise sallantı bölümü (divide) sorun çıkarmasın diye
         float safeMaxSpeed = Mathf.Max(0.001f, Mathf.Abs(maxMoveSpeed));

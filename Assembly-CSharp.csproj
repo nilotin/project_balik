@@ -46,10 +46,37 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/BuildPipeline/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/ysy/GameManager.cs" />
+    <Compile Include="Assets/ysy/powUpSpeed.cs" />
+    <Compile Include="Assets/ysy/BIllboardOnlyY.cs" />
+    <Compile Include="Assets/nilsu/scripts-nil/ShipMovement.cs" />
+    <Compile Include="Assets/nilsu/scripts-nil/OceanChunkManager.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
-    <Compile Include="Assets/scripts-nil/ShipMovement.cs" />
-    <Compile Include="Assets/scripts-nil/CameraFollow.cs" />
-    <Compile Include="Assets/scripts-nil/OceanChunkManager.cs" />
+    <Compile Include="Assets/birdem/marketUI.cs" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
+    <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
+    <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" />
+    <None Include="Assets/TextMesh Pro/Sprites/EmojiOne.json" />
+    <None Include="Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -842,6 +869,9 @@
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
@@ -985,6 +1015,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.AIIntegration.Editor">
+      <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.2D.Sprite.AIIntegration.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>

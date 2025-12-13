@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<<<<<<< HEAD
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
     <_TargetFrameworkDirectories>non_empty_path_generated_by_unity.rider.package</_TargetFrameworkDirectories>
     <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_unity.rider.package</_FullFrameworkReferenceAssemblyPaths>
     <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
     </PropertyGroup>
+=======
+>>>>>>> 61db9245 (health system and ui)
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
+    <_TargetFrameworkDirectories>non_empty_path_generated_by_unity.rider.package</_TargetFrameworkDirectories>
+    <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_unity.rider.package</_FullFrameworkReferenceAssemblyPaths>
+    <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,6 +61,12 @@
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
+<<<<<<< HEAD
+=======
+    </Reference>
+    <Reference Include="UnityEngine.AMDModule">
+      <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.AMDModule.dll</HintPath>
+>>>>>>> 61db9245 (health system and ui)
     </Reference>
     <Reference Include="UnityEngine.ARModule">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
@@ -154,6 +166,12 @@
     </Reference>
     <Reference Include="UnityEngine.MultiplayerModule">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.MultiplayerModule.dll</HintPath>
+<<<<<<< HEAD
+=======
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.NVIDIAModule.dll</HintPath>
+>>>>>>> 61db9245 (health system and ui)
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
@@ -503,9 +521,12 @@
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/netstandard.dll</HintPath>
     </Reference>
+=======
+>>>>>>> 61db9245 (health system and ui)
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/mscorlib.dll</HintPath>
     </Reference>
@@ -878,6 +899,12 @@
     <Reference Include="System.Xml.XmlSerializer">
       <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/System.Xml.XmlSerializer.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="netstandard">
+      <HintPath>/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/UnityReferenceAssemblies/unity-4.8-api/Facades/netstandard.dll</HintPath>
+    </Reference>
+>>>>>>> 61db9245 (health system and ui)
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
@@ -1051,4 +1078,15 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+<<<<<<< HEAD
 </Project>
+=======
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
+>>>>>>> 61db9245 (health system and ui)

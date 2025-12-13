@@ -4,11 +4,18 @@ using UnityEngine.InputSystem;
 public class ShipMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float maxMoveSpeed = 6f;        // Maksimum hız (GameManager varsa buradan override edilir)
-    public float acceleration = 3f;        // Hızlanma
-    public float deceleration = 4f;        // Yavaşlama
-    public float turnSpeed = 80f;
+    public float maxMoveSpeed = 6f;
+    public float acceleration = 3f;
+    public float deceleration = 4f;
     public float fixedY = 0f;
+
+    [Header("Turning")]
+    public float maxTurnSpeed = 80f;
+
+    [Header("Turning Inertia")]
+    public float turnAcceleration = 120f;
+    public float turnDeceleration = 160f;
+    public float minTurnFactor = 0.3f;
 
     [Header("Sway Settings")]
     public float swayAngle = 2f;
@@ -16,20 +23,17 @@ public class ShipMovement : MonoBehaviour
     public float idleSwayFactor = 0.3f;
 
     private float currentSpeed = 0f;
+    private float currentTurnSpeed = 0f; // 🔥 kavisli dönüşün anahtarı
 
     void Start()
     {
-        // GameManager varsa hızını kullan (GameManager'da method adı GetSpeed)
         if (GameManager.Instance != null)
-        {
-            // speed 0 gelirse gemi hiç gitmesin istemiyorsan: Mathf.Max(1f, ...)
             maxMoveSpeed = GameManager.Instance.GetSpeed();
-        }
     }
 
     void Update()
     {
-        // --- INPUT ---
+        // ================= INPUT =================
         float moveInput = 0f;
         float turnInput = 0f;
 
@@ -40,32 +44,51 @@ public class ShipMovement : MonoBehaviour
             if (Keyboard.current.aKey.isPressed) turnInput -= 1f;
             if (Keyboard.current.dKey.isPressed) turnInput += 1f;
         }
+
         maxMoveSpeed = GameManager.Instance.GetSpeed();
+        float safeMaxSpeed = Mathf.Max(0.001f, maxMoveSpeed);
 
-        // Eğer maxMoveSpeed 0 ise sallantı bölümü (divide) sorun çıkarmasın diye
-        float safeMaxSpeed = Mathf.Max(0.001f, Mathf.Abs(maxMoveSpeed));
-
-        // --- ACCELERATION / DECELERATION ---
+        // ================= SPEED INERTIA =================
         float targetSpeed = moveInput * maxMoveSpeed;
-
-        float rate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentSpeed)
+        float speedRate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentSpeed)
             ? acceleration
             : deceleration;
 
-        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, rate * Time.deltaTime);
+        currentSpeed = Mathf.MoveTowards(
+            currentSpeed,
+            targetSpeed,
+            speedRate * Time.deltaTime
+        );
 
-        // --- HAREKET ---
+        // ================= MOVE =================
         transform.position += transform.forward * currentSpeed * Time.deltaTime;
 
-        // --- DÖNÜŞ (Yaw) ---
-        float turn = turnInput * turnSpeed * Time.deltaTime;
-        transform.Rotate(0f, turn, 0f);
+        // ================= TURN INERTIA (KAVİS) =================
+        float speedFactor = Mathf.Abs(currentSpeed) / safeMaxSpeed;
+        float turnFactor = Mathf.Lerp(minTurnFactor, 1f, speedFactor);
 
-        // --- Y SABİT ---
-        transform.position = new Vector3(transform.position.x, fixedY, transform.position.z);
+        float targetTurnSpeed = turnInput * maxTurnSpeed * turnFactor;
 
-        // --- SALLANTI (hıza bağlı) ---
-        float speedFactor = Mathf.Abs(currentSpeed) / safeMaxSpeed; // 0–1
+        float turnRate = Mathf.Abs(targetTurnSpeed) > Mathf.Abs(currentTurnSpeed)
+            ? turnAcceleration
+            : turnDeceleration;
+
+        currentTurnSpeed = Mathf.MoveTowards(
+            currentTurnSpeed,
+            targetTurnSpeed,
+            turnRate * Time.deltaTime
+        );
+
+        transform.Rotate(0f, currentTurnSpeed * Time.deltaTime, 0f);
+
+        // ================= FIX Y =================
+        transform.position = new Vector3(
+            transform.position.x,
+            fixedY,
+            transform.position.z
+        );
+
+        // ================= SWAY =================
         float swayMultiplier = Mathf.Clamp01(speedFactor + idleSwayFactor);
         float sway = Mathf.Sin(Time.time * swaySpeed) * swayAngle * swayMultiplier;
 

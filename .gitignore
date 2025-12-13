@@ -104,3 +104,10 @@ InitTestScene*.unity*
 # Unity logs
 [Ll]ogs/
 
+
+# Unity local stuff
+[Ll]ogs/
+UserSettings/
+*.csproj
+*.sln
+

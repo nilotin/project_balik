@@ -893,6 +893,10 @@
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
@@ -1034,6 +1038,16 @@
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="Unity.2D.Sprite.AIIntegration.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.AIIntegration.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
+      <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
+    </Reference>
+>>>>>>> 292594a36d09e54a7e25f514ef22baad8e9fc21b
     <Reference Include="Unity.2D.Sprite.AIIntegration.Editor">
       <HintPath>/Users/nilsudemirag/Desktop/project_balik/Library/ScriptAssemblies/Unity.2D.Sprite.AIIntegration.Editor.dll</HintPath>
     </Reference>

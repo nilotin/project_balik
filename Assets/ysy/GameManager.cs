@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public float speed = 0;
     public bool IsInvincible = false;
-    [SerializeField] private int currency = 0;
+    [SerializeField]private int currency = 0;
     private int OverdrivePriceCur = 15;
     private int FrostChargePriceCur = 15;
     private int overDriveLevel = 1;

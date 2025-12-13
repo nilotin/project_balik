@@ -234,8 +234,11 @@ MonoBehaviour:
   maxMoveSpeed: 6
   acceleration: 3
   deceleration: 4
-  turnSpeed: 80
   fixedY: 0
+  maxTurnSpeed: 80
+  turnAcceleration: 120
+  turnDeceleration: 160
+  minTurnFactor: 0.3
   swayAngle: 2
   swaySpeed: 1.2
   idleSwayFactor: 0.3
@@ -1050,7 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OceanChunkManager
   ship: {fileID: 43518035}
-  tilePrefab: {fileID: 2631331764441712825, guid: d8e93f4cea21a41eda6c30e3f4fac63a, type: 3}
+  tilePrefab: {fileID: 5573759865548686986, guid: 41a98ab640be140f9bc66cb297922574, type: 3}
   tileSize: 10
   forwardTiles: 10
   backwardTiles: 10
@@ -1059,6 +1062,13 @@ MonoBehaviour:
   deepColor: {r: 0.02, g: 0.08, b: 0.2, a: 1}
   maxDarkDistance: 300
   fogStrength: 0.6
+  fishPrefabs:
+  - {fileID: 5843657851490918556, guid: 4835fc246dc862a478d00c7af600c93b, type: 3}
+  powerUpPrefabs: []
+  enemyPrefabs: []
+  fishChance: 1
+  powerUpChance: 0
+  enemyChance: 0
   maxSpawnPerFrame: 20
 --- !u!4 &1841657619
 Transform:

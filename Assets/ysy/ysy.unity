@@ -866,6 +866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: shark
       objectReference: {fileID: 0}
+    - target: {fileID: 6793530407499020542, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
+      propertyPath: m_TagString
+      value: shark
+      objectReference: {fileID: 0}
     - target: {fileID: 7564415457287460812, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.33

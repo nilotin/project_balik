@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private int OverdrivePriceCur = 15;
     private int FrostChargePriceCur = 15;
     private int overDriveLevel = 1;
+    public GameObject ship;
 
     public static GameManager Instance
     {

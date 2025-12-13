@@ -111,3 +111,7 @@ UserSettings/
 *.csproj
 *.sln
 
+
+# Unity local logs
+[Ll]ogs/
+

@@ -1062,13 +1062,33 @@ MonoBehaviour:
   deepColor: {r: 0.02, g: 0.08, b: 0.2, a: 1}
   maxDarkDistance: 300
   fogStrength: 0.6
-  fishPrefabs:
-  - {fileID: 5843657851490918556, guid: 4835fc246dc862a478d00c7af600c93b, type: 3}
-  powerUpPrefabs: []
-  enemyPrefabs: []
-  fishChance: 1
-  powerUpChance: 0
-  enemyChance: 0
+  powerUpPrefabs:
+  - {fileID: 7401029315344581936, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
+  enemyPrefabs:
+  - {fileID: 6793530407499020542, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
+  - {fileID: 6793040787934754305, guid: 7fd0770249028fd4bb441c84f1961738, type: 3}
+  fishChance: 0.4
+  powerUpChance: 0.3
+  enemyChance: 0.2
+  raritySettings:
+  - prefabs:
+    - {fileID: 5843657851490918556, guid: 4835fc246dc862a478d00c7af600c93b, type: 3}
+    baseChance: 0.8
+    distanceStart: 0
+    distanceMax: 100
+    rarityName: Common
+  - prefabs:
+    - {fileID: 5843657851490918556, guid: 4835fc246dc862a478d00c7af600c93b, type: 3}
+    baseChance: 0.1
+    distanceStart: 100
+    distanceMax: 500
+    rarityName: Rare
+  - prefabs:
+    - {fileID: 5843657851490918556, guid: 4835fc246dc862a478d00c7af600c93b, type: 3}
+    baseChance: 0.01
+    distanceStart: 500
+    distanceMax: 1000
+    rarityName: Legandary
   maxSpawnPerFrame: 20
 --- !u!4 &1841657619
 Transform:

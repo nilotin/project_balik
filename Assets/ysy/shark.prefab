@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2996222809834554803, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 86096cb478baa0d4cb286ed191f2b0a9, type: 3}
     - target: {fileID: 6411833546778724940, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.74539
@@ -48,13 +52,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7615845714644677507, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7946087576886125950, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
       propertyPath: m_Name
       value: shark
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946087576886125950, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
+      propertyPath: m_TagString
+      value: worm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62,20 +66,36 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7946087576886125950, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 613124465756681927}
+      addedObject: {fileID: 4936510827795417896}
     - targetCorrespondingSourceObject: {fileID: 7946087576886125950, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4947579667297785859}
+      addedObject: {fileID: 9222946272663985955}
+    - targetCorrespondingSourceObject: {fileID: 7946087576886125950, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2594063899253798726}
     - targetCorrespondingSourceObject: {fileID: 6772738584248445317, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8221737152671111457}
+      addedObject: {fileID: 2319611400461961029}
   m_SourcePrefab: {fileID: 100100000, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
 --- !u!1 &6793530407499020542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7946087576886125950, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
   m_PrefabInstance: {fileID: 3459146475927903616}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &613124465756681927
+--- !u!114 &4936510827795417896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793530407499020542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700430d8b87c20746bcace4a440e68ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  isFrozen: 0
+--- !u!114 &9222946272663985955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,46 +106,32 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: deea5534d4812c045a9727035c74d576, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::enemy
   ship: {fileID: 0}
   shipTag: ship
   moveSpeed: 3
   chaseRange: 10
-  stopDistance: 0.5
+  stopDistance: 2.5
   lockY: 1
---- !u!54 &4947579667297785859
-Rigidbody:
+--- !u!114 &2594063899253798726
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6793530407499020542}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700430d8b87c20746bcace4a440e68ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::state
+  isFrozen: 0
 --- !u!1 &7925423572629058565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6772738584248445317, guid: 8473f1591333fb04fa9bacbb697b20e9, type: 3}
   m_PrefabInstance: {fileID: 3459146475927903616}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8221737152671111457
+--- !u!114 &2319611400461961029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

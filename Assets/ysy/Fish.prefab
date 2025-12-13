@@ -50,11 +50,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633439855375152116, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
       propertyPath: m_Name
-      value: Fish
+      value: fish
       objectReference: {fileID: 0}
     - target: {fileID: 6145578224347311821, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493118931132057185, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
+      propertyPath: m_Size.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493118931132057185, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
+      propertyPath: m_Size.y
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 7493118931132057185, guid: 9b7337f2ab26c1f4ba8bdea7f9a6fde8, type: 3}
       propertyPath: m_Sprite

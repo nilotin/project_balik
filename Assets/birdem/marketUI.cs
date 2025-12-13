@@ -26,6 +26,22 @@ public class MarketUI : MonoBehaviour
         TryBuy("Frost Charge", price);
     }
 
+     public void BuyVortex()
+    {
+        //int price = GameManager.Instance.FrostChargePrice();
+        int price = 10;
+        TryBuy("Vortex", price);
+        
+    }
+
+     public void BuyLightning()
+    {
+        //int price = GameManager.Instance.FrostChargePrice();
+        int price = 15;
+        TryBuy("Lightning", price);
+        
+    }
+
     private void TryBuy(string itemName, int price)
     {
         int cur = GameManager.Instance.GetCurrency();

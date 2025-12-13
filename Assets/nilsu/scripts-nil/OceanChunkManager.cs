@@ -6,6 +6,26 @@ using UnityEngine;
 public class OceanChunkManager : MonoBehaviour
 {
     // =================================================================================
+    // YAPISAL AYARLAR (STRUCTS)
+    // =================================================================================
+
+    // Balık nadirliğini ve spawn şansını uzaklığa göre ayarlayan yapı
+    [System.Serializable]
+    public struct FishRaritySettings
+    {
+        [Tooltip("Bu nadirliğe ait balıkların prefab dizisi.")]
+        public GameObject[] prefabs;
+        [Tooltip("Bu nadirlik için taban spawn şansı (0-1).")]
+        [Range(0f, 1f)] public float baseChance;
+        [Tooltip("Bu nadirliğin şansının artmaya başladığı uzaklık (m).")]
+        public float distanceStart;
+        [Tooltip("Bu nadirliğin maksimum şansa ulaştığı uzaklık (m).")]
+        public float distanceMax;
+        [Tooltip("Fish bileşenine atanacak nadirlik değeri (Örn: Common, Rare, Legandary).")]
+        public string rarityName; 
+    }
+
+    // =================================================================================
     // REFERANSLAR VE AYARLAR
     // =================================================================================
 
@@ -36,20 +56,24 @@ public class OceanChunkManager : MonoBehaviour
     [Tooltip("Sis yoğunluğu.")]
     public float fogStrength = 0.6f;
 
-    [Header("4. Content Prefabs")]
-    public GameObject[] fishPrefabs;
+    [Header("4. General Content")]
+    // Not: Balık prefabları artık raritySettings içinde yönetiliyor
     public GameObject[] powerUpPrefabs;
     public GameObject[] enemyPrefabs;
 
     [Header("5. Spawn Chances (0–1)")]
-    [Tooltip("Balık spawnlanma olasılığı (0: yok, 1: her zaman).")]
+    [Tooltip("Balık spawnlanma olasılığı (Nadirliğe geçmeden önceki ana şans).")]
     public float fishChance = 1f;
     [Tooltip("Power-up spawnlanma olasılığı.")]
     public float powerUpChance = 0f;
     [Tooltip("Düşman spawnlanma olasılığı.")]
     public float enemyChance = 0f;
 
-    [Header("6. Performance")]
+    [Header("6. Fish Rarity & Distance")]
+    [Tooltip("Balık nadirlik seviyelerinin ayarları (Ortak, Nadir, Efsanevi).")]
+    public FishRaritySettings[] raritySettings;
+
+    [Header("7. Performance")]
     [Tooltip("Bir Update döngüsünde maksimum kaç yeni karo spawnlanacak.")]
     public int maxSpawnPerFrame = 20;
 
@@ -57,15 +81,10 @@ public class OceanChunkManager : MonoBehaviour
     // ÖZEL ALANLAR (INTERNAL FIELDS)
     // =================================================================================
 
-    // Aktif karoları ve koordinatlarını tutar.
     private readonly Dictionary<Vector2Int, GameObject> activeTiles = new();
-    // Yeniden kullanmak üzere pasif karoları tutar (object pooling).
     private readonly Queue<GameObject> tilePool = new();
-    // Karoların renklerini değiştirmek için kullanılır.
     private MaterialPropertyBlock mpb;
-    // Gemi ilk başladığında alınan başlangıç noktası (Derinlik hesaplaması için).
     private Vector3 origin;
-    // SpawnPoint isimlerini sabit tutmak için (Daha az hataya açık).
     private const string FISH_POINT = "FishSpawnPoint";
     private const string POWERUP_POINT = "PowerUpSpawnPoint";
     private const string ENEMY_POINT = "EnemySpawnPoint";
@@ -78,7 +97,6 @@ public class OceanChunkManager : MonoBehaviour
     void Awake()
     {
         mpb = new MaterialPropertyBlock();
-        // Gemi varsa geminin pozisyonunu, yoksa (0,0,0)'ı başlangıç noktası alır.
         origin = ship != null ? ship.position : Vector3.zero;
     }
 
@@ -99,20 +117,14 @@ public class OceanChunkManager : MonoBehaviour
     /// </summary>
     private void UpdateOceanChunks()
     {
-        // 1. Gerekli koordinatları belirle
         HashSet<Vector2Int> neededCoords = GetNeededTileCoordinates();
-
-        // 2. Gereksiz karoları temizle (Despawn)
         CleanUpUnusedTiles(neededCoords);
-
-        // 3. Eksik karoları oluştur (Spawn)
         SpawnMissingTiles(neededCoords);
     }
     
     /// <summary>
     /// Geminin konumuna göre oluşturulması gereken tüm karo koordinatlarını hesaplar.
     /// </summary>
-    /// <returns>Gerekli Vector2Int koordinatlarının kümesi.</returns>
     private HashSet<Vector2Int> GetNeededTileCoordinates()
     {
         HashSet<Vector2Int> needed = new();
@@ -120,7 +132,6 @@ public class OceanChunkManager : MonoBehaviour
 
         for (int z = -backwardTiles; z <= forwardTiles; z++)
         {
-            // İlerledikçe yana doğru genişleme için interpolasyon hesaplama
             float t = Mathf.InverseLerp(-backwardTiles, forwardTiles, z);
             int sideCount = Mathf.RoundToInt(Mathf.Lerp(1, maxSideTiles, t));
 
@@ -180,18 +191,15 @@ public class OceanChunkManager : MonoBehaviour
     /// </summary>
     private void SpawnTile(Vector2Int coord)
     {
-        // Havuzdan al veya yeni oluştur (Pooling)
         GameObject tile = tilePool.Count > 0 ? tilePool.Dequeue() : Instantiate(tilePrefab);
         
-        // Ayarları yap
         tile.transform.SetParent(transform, false);
         tile.transform.position = TileCoordToWorld(coord);
         tile.SetActive(true);
 
-        // İçeriği ve rengi ayarla
-        ClearContent(tile); // Önceki içeriği temizle
-        ApplyDepthColor(tile); // Derinlik rengini uygula
-        TrySpawnContent(tile); // Yeni içeriği spawnla
+        ClearContent(tile); 
+        ApplyDepthColor(tile); 
+        TrySpawnContent(tile); 
 
         activeTiles[coord] = tile;
     }
@@ -203,70 +211,178 @@ public class OceanChunkManager : MonoBehaviour
     {
         if (!activeTiles.TryGetValue(coord, out var tile)) return;
         
-        ClearContent(tile); // İçeriği temizlemeyi unutma
+        ClearContent(tile); 
         tile.SetActive(false);
         tilePool.Enqueue(tile);
         activeTiles.Remove(coord);
     }
 
     // =================================================================================
-    // İÇERİK (CONTENT) YÖNETİMİ
+    // İÇERİK (CONTENT) YÖNETİMİ - GÜNCEL VE NADİRLİK KONTROLLÜ
     // =================================================================================
 
     /// <summary>
-    /// Karo içinde düşman, power-up veya balık spawnlamayı dener.
+    /// Karo içinde rastgele 0 ile 3 arasında içerik spawnlamayı dener.
+    /// Her spawn noktasında sadece bir obje olmasına izin verir.
+    /// Balık nadirliği uzaklığa göre hesaplanır.
     /// </summary>
     private void TrySpawnContent(GameObject tile)
     {
         Transform content = tile.transform.Find(CONTENT_CONTAINER);
         if (!content) return;
 
-        // Düşman öncelikli spawnlanır. Spawnlanırsa geri döner.
-        if (enemyPrefabs.Length > 0 && Random.value < enemyChance)
-        {
-            SpawnAt(content, ENEMY_POINT, enemyPrefabs);
-            return;
-        }
+        // 1. O karoya kaç tane obje spawnlanacağına rastgele karar ver (0, 1, 2 veya 3)
+        int spawnCount = Random.Range(0, 4); 
 
-        // Power-Up spawnlanırsa geri döner.
-        if (powerUpPrefabs.Length > 0 && Random.value < powerUpChance)
+        // 2. Belirlenen sayı kadar spawn döngüsü başlat
+        for (int i = 0; i < spawnCount; i++)
         {
-            SpawnAt(content, POWERUP_POINT, powerUpPrefabs);
-            return;
-        }
+            // Düşman öncelikli kontrol
+            if (enemyPrefabs.Length > 0 && Random.value < enemyChance)
+            {
+                Transform point = content.Find(ENEMY_POINT);
+                if (point != null && point.childCount == 0)
+                {
+                    SpawnGenericContentAt(content, ENEMY_POINT, enemyPrefabs);
+                    continue;
+                }
+            }
 
-        // Balık (Son şans)
-        if (fishPrefabs.Length > 0 && Random.value < fishChance)
-        {
-            SpawnAt(content, FISH_POINT, fishPrefabs);
-            // Debug Log: Balıkların spawnlandığını onaylamak için eklendi.
-            // Önceki hatanın tespitinde çok faydalı oldu.
-            Debug.Log($"Başarıyla spawnlanıyor: {FISH_POINT} koordinatında: {content.Find(FISH_POINT).position}");
-            return;
+            // Power-Up kontrolü
+            else if (powerUpPrefabs.Length > 0 && Random.value < powerUpChance)
+            {
+                Transform point = content.Find(POWERUP_POINT);
+                if (point != null && point.childCount == 0)
+                {
+                    SpawnGenericContentAt(content, POWERUP_POINT, powerUpPrefabs);
+                    continue;
+                }
+            }
+        
+            // Balık kontrolü (Nadirliğe göre spawn eden özel metot çağrılır)
+            else if (raritySettings.Length > 0 && Random.value < fishChance)
+            {
+                Transform point = content.Find(FISH_POINT);
+                if (point != null && point.childCount == 0)
+                {
+                    SpawnFishAt(content);
+                    continue;
+                }
+            }
         }
     }
 
     /// <summary>
-    /// Belirtilen prefabı, belirtilen spawn noktasının altına child olarak oluşturur.
+    /// Balık prefabını seçer, nadirliğini hesaplar ve spawn eder.
     /// </summary>
-    private void SpawnAt(Transform contentContainer, string pointName, GameObject[] prefabs)
+    private void SpawnFishAt(Transform contentContainer)
     {
-        Transform point = contentContainer.Find(pointName);
-        if (!point)
+        Transform point = contentContainer.Find(FISH_POINT);
+        if (!point) return;
+        
+        // 1. Uzaklığı hesapla
+        float distance = Vector3.Distance(point.position, origin);
+        
+        // 2. Nadirlik seçimi için toplam şansı ve zarı belirle
+        float totalChance = 0f;
+        foreach (var setting in raritySettings)
         {
-            Debug.LogWarning($"SpawnPoint bulunamadı: {pointName}");
+            float t = Mathf.InverseLerp(setting.distanceStart, setting.distanceMax, distance);
+            // Uzaklaştıkça şans artar (0'dan 1'e Lerp)
+            float currentChance = Mathf.Lerp(setting.baseChance, 1f, t); 
+            totalChance += currentChance;
+        }
+
+        // Toplam şansa göre zar atılır
+        float roll = Random.Range(0f, totalChance > 0 ? totalChance : 1f); 
+        
+        GameObject selectedPrefab = null;
+        string selectedRarity = "Common"; 
+        float cumulativeChance = 0f;
+        
+        // 3. Hangi nadirliğin seçildiğini bul
+        foreach (var setting in raritySettings)
+        {
+            float t = Mathf.InverseLerp(setting.distanceStart, setting.distanceMax, distance);
+            float currentChance = Mathf.Lerp(setting.baseChance, 1f, t);
+            
+            cumulativeChance += currentChance;
+            
+            if (roll <= cumulativeChance)
+            {
+                selectedRarity = setting.rarityName;
+                if (setting.prefabs.Length > 0)
+                {
+                    selectedPrefab = setting.prefabs[Random.Range(0, setting.prefabs.Length)];
+                }
+                break; 
+            }
+        }
+        
+        // 4. Spawn etme ve nadirliği atama
+        if (selectedPrefab == null)
+        {
+            Debug.LogWarning("Balık spawnlanamadı: Prefab bulunamadı veya nadirlik dizisi boş.");
             return;
         }
 
+        GameObject obj = Instantiate(selectedPrefab, point);
+
+        // Nadirliği atama (Fish component'inin 'rarity' adında Rarity Enum'u kullandığı varsayılır)
+        fish fishComponent = obj.GetComponent<fish>(); // fish.cs içindeki sınıf adı büyük ihtimalle 'fish' değil, 'Fish' olmalı
+        if (fishComponent != null)
+        {
+            try
+            {
+                // String'i Rarity Enum'una dönüştürerek atama yap
+                System.Type rarityEnumType = System.Type.GetType("Rarity"); // Global Enum'u arama
+                if (rarityEnumType == null)
+                {
+                    // Eğer Rarity Enum'u 'fish' sınıfının içinde tanımlıysa (gönderdiğiniz kodda öyle)
+                    rarityEnumType = typeof(Rarity); 
+                }
+
+                if (rarityEnumType != null)
+                {
+                    object newRarity = System.Enum.Parse(rarityEnumType, selectedRarity);
+                    fishComponent.rarity = (Rarity)newRarity; 
+                }
+                else
+                {
+                    Debug.LogError("Rarity Enum tipi bulunamadı! Lütfen Fish scriptindeki sınıf adını kontrol edin.");
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Nadirliği atarken hata oluştu. Ayar Adı: {selectedRarity}, Hata: {e.Message}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Spawnlanan balık prefabında Fish bileşeni bulunamadı: {selectedPrefab.name}");
+        }
+
+        // Pozisyonu rastgele kaydırma
+        obj.transform.localPosition = Vector3.zero + new Vector3(
+            Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f)
+        );
+        obj.transform.localRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+    }
+
+    /// <summary>
+    /// Düşman ve Power-Up gibi genel içerikleri spawn eder.
+    /// </summary>
+    private void SpawnGenericContentAt(Transform contentContainer, string pointName, GameObject[] prefabs)
+    {
+        Transform point = contentContainer.Find(pointName);
+        if (!point) return;
+        
         GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
         GameObject obj = Instantiate(prefab, point);
 
-        // Yerel pozisyonu spawn noktasının çevresinde rastgele kaydırma
+        // Pozisyonu rastgele kaydırma
         obj.transform.localPosition = Vector3.zero + new Vector3(
-            Random.Range(-2f, 2f),
-            // Y pozisyonu kasıtlı olarak 0f'de bırakıldı. FishSpawnPoint'in Y'si ayarlanmalı!
-            0f, 
-            Random.Range(-2f, 2f)
+            Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f)
         );
 
         obj.transform.localRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
@@ -280,12 +396,10 @@ public class OceanChunkManager : MonoBehaviour
         Transform content = tile.transform.Find(CONTENT_CONTAINER);
         if (!content) return;
 
-        // Content altındaki tüm spawn noktalarını kontrol et
         foreach (Transform point in content)
         {
             if (point.childCount > 0)
             {
-                // Spawn noktasının altındaki objeyi yok et (DestroyImmediate değil!)
                 Destroy(point.GetChild(0).gameObject); 
             }
         }
@@ -301,18 +415,14 @@ public class OceanChunkManager : MonoBehaviour
     private void ApplyDepthColor(GameObject tile)
     {
         float dist = Vector3.Distance(tile.transform.position, origin);
-        // Lerp'i yumuşatmak için bir üst alma (power) kullanıldı.
         float t = Mathf.Pow(Mathf.InverseLerp(0f, maxDarkDistance, dist), 1.8f);
 
-        // Derinlik rengi (sığdan derine)
         Color depth = Color.Lerp(shallowColor, deepColor, t);
-        // Sis efekti (derinlik rengini kamera arka plan rengine yaklaştırır)
         Color fogged = Color.Lerp(depth, Camera.main.backgroundColor, t * fogStrength);
 
         Renderer r = tile.GetComponent<Renderer>();
-        // Renderer'a özel, paylaşılan materyali değiştirmeyen özellik bloğu (Property Block) kullanılır.
         r.GetPropertyBlock(mpb);
-        mpb.SetColor("_BaseColor", fogged); // Universal RP'de _BaseColor varsayılır.
+        mpb.SetColor("_BaseColor", fogged);
         r.SetPropertyBlock(mpb);
     }
 
@@ -325,7 +435,6 @@ public class OceanChunkManager : MonoBehaviour
     /// </summary>
     private Vector2Int WorldToTileCoord(Vector3 pos)
     {
-        // Z eksenini Y koordinatı olarak kullanır.
         return new Vector2Int(
             Mathf.FloorToInt(pos.x / tileSize),
             Mathf.FloorToInt(pos.z / tileSize)
@@ -337,7 +446,6 @@ public class OceanChunkManager : MonoBehaviour
     /// </summary>
     private Vector3 TileCoordToWorld(Vector2Int coord)
     {
-        // Y pozisyonu daima 0'dır (Deniz yüzeyi varsayımı).
         return new Vector3(coord.x * tileSize, 0f, coord.y * tileSize);
     }
 }

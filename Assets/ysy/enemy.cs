@@ -6,7 +6,10 @@ public class enemy : MonoBehaviour
     public string shipTag = "ship";
 
     public float moveSpeed = 3f;
+
+    public float chaseRange = 10f;   // <-- YENİ
     public float stopDistance = 2.5f;
+
     public bool lockY = true;
 
     private Rigidbody rb;
@@ -45,6 +48,12 @@ public class enemy : MonoBehaviour
 
         float dist = Vector3.Distance(transform.position, target);
 
+        if (dist > chaseRange)
+        {
+            Stop();
+            return;
+        }
+
         if (dist <= stopDistance)
         {
             Stop();
@@ -67,11 +76,11 @@ public class enemy : MonoBehaviour
     {
         if (rb != null)
         {
-            // Unity 2021/2022:
+            // Unity 2021 / 2022
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            // Unity 6 kullanıyorsan velocity yerine linearVelocity var
+            // Unity 6 ise:
             // rb.linearVelocity = Vector3.zero;
         }
     }

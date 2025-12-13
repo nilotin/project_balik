@@ -45,26 +45,32 @@ public class powUpSpeed : MonoBehaviour
         speedBefore = GameManager.Instance.GetSpeed();
 
         float startSpeed = speedBefore * 3f;
+        float targetSpeed = speedBefore;
         float duration = 5f;
         float elapsedTime = 0f;
 
-        currentSpeed = startSpeed;
+        // Boostu anında uygula
+        GameManager.Instance.SetSpeed(startSpeed);
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
 
-            // Linear yavaşlama
-            currentSpeed = Mathf.Lerp(startSpeed, 0f, t);
+            currentSpeed = Mathf.Lerp(startSpeed, targetSpeed, t);
+
+            // Güvenlik: asla eski hızı aşmasın
+            currentSpeed = Mathf.Max(currentSpeed, targetSpeed);
+
             GameManager.Instance.SetSpeed(currentSpeed);
 
             yield return null;
         }
 
+        // Final garanti
         GameManager.Instance.SetSpeed(speedBefore);
-        GameManager.Instance.IsInvincible = false; 
-
+        GameManager.Instance.IsInvincible = false;
     }
+
 }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9aadce56a3e393e4cb27e407f75c0a0b
+guid: c9cd97140ea9ca54a8ee24f7643711a6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: powup_speed-Sheet_0
+      name: powup_speed-Sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdcbde54c5af71c409163d3604f4f61a
-      internalID: 1668354807
+      spriteID: 39462ac7931f8484ab4114e13e13ec9e
+      internalID: -603541313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: powup_speed-Sheet_1
+      name: powup_speed-Sheet 1_1
       rect:
         serializedVersion: 2
         x: 128
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7077880f01fc2f42a633135c50fc42d
-      internalID: 1017432791
+      spriteID: 75267a7c1e1b7b843966d76c9b2547fd
+      internalID: -5689628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: powup_speed-Sheet_2
+      name: powup_speed-Sheet 1_2
       rect:
         serializedVersion: 2
         x: 256
@@ -156,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06e3f90fc5ee66b48936e3b2d96a73ed
-      internalID: 2023749017
+      spriteID: 648bdef9c7a8b214da4a12ca37e7a381
+      internalID: 1365861704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: powup_speed-Sheet_3
+      name: powup_speed-Sheet 1_3
       rect:
         serializedVersion: 2
         x: 384
@@ -178,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 709f39784fe4eee4e932689c5f75ac84
-      internalID: 214829100
+      spriteID: 50d0a5ccef32055428a711f5def4820d
+      internalID: 1322633744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: powup_speed-Sheet_4
+      name: powup_speed-Sheet 1_4
       rect:
         serializedVersion: 2
         x: 512
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5aa2901af6078c4ea4b129dbf5c9e68
-      internalID: 1494891861
+      spriteID: ef9132578d750db4db618fc4c495442a
+      internalID: -506569197
       vertices: []
       indices: 
       edges: []
@@ -210,7 +210,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 33af64c29ef170e4d846d024eb62d56c
+    spriteID: 5bb23f1c035e5214aa77b513c0ad690f
     internalID: 0
     vertices: []
     indices: 
@@ -222,11 +222,11 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      powup_speed-Sheet_0: 1668354807
-      powup_speed-Sheet_1: 1017432791
-      powup_speed-Sheet_2: 2023749017
-      powup_speed-Sheet_3: 214829100
-      powup_speed-Sheet_4: 1494891861
+      powup_speed-Sheet 1_0: -603541313
+      powup_speed-Sheet 1_1: -5689628
+      powup_speed-Sheet 1_2: 1365861704
+      powup_speed-Sheet 1_3: 1322633744
+      powup_speed-Sheet 1_4: -506569197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

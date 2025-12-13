@@ -5,10 +5,7 @@ using System.Collections.Generic;
 public class powUpsOnHand : MonoBehaviour
 {
 
-
-    [Header("Inventory")]
-    public int maxSlots = 3;
-    private List<string> inventory = new List<string>();
+public int maxSlots = 3;
 
     [Header("UI")]
     public List<Image> slotImages;
@@ -18,7 +15,8 @@ public class powUpsOnHand : MonoBehaviour
     public Sprite vortexIcon;
     public Sprite lightningIcon;
 
-    // 🔹 Ekle
+    private List<string> inventory = new List<string>();
+
     public bool AddPowerUp(string powerUpName)
     {
         if (inventory.Count >= maxSlots)
@@ -31,54 +29,35 @@ public class powUpsOnHand : MonoBehaviour
         return true;
     }
 
-    // 🔹 Kullan (ilk eleman)
-    public void UseFirstPowerUp()
+    public string PeekFirst()
     {
         if (inventory.Count == 0)
         {
-            return;
+            return null;
         }
 
-        string powerUp = inventory[0];
+        return inventory[0];
+    }
 
-        ApplyPowerUp(powerUp);
+    public string ConsumeFirst()
+    {
+        if (inventory.Count == 0)
+        {
+            return null;
+        }
 
+        string p = inventory[0];
         inventory.RemoveAt(0);
         UpdateUI();
+        return p;
     }
 
-    // 🔹 PowerUp etkisi
-    void ApplyPowerUp(string powerUp)
-    {
-        switch (powerUp)
-        {
-            case "ice":
-                Debug.Log("ICE power-up kullanıldı");
-                break;
-
-            case "vortex":
-                Debug.Log("VORTEX power-up kullanıldı");
-                break;
-
-            case "lightning":
-                Debug.Log("LIGHTNING power-up kullanıldı");
-                break;
-
-            default:
-                Debug.LogWarning("Bilinmeyen power-up: " + powerUp);
-                break;
-        }
-    }
-
-    // 🔹 UI güncelle
     void UpdateUI()
     {
-
         for (int i = 0; i < slotImages.Count; i++)
         {
             if (i < inventory.Count)
             {
-
                 slotImages[i].sprite = GetIcon(inventory[i]);
                 slotImages[i].enabled = true;
             }
@@ -90,7 +69,6 @@ public class powUpsOnHand : MonoBehaviour
         }
     }
 
-    // 🔹 string → icon
     Sprite GetIcon(string powerUp)
     {
         switch (powerUp)
@@ -107,6 +85,7 @@ public class powUpsOnHand : MonoBehaviour
 
         return null;
     }
+
 
 
 }

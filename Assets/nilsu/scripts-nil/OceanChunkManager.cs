@@ -61,6 +61,9 @@ public class OceanChunkManager : MonoBehaviour
     public GameObject[] powerUpPrefabs;
     public GameObject[] enemyPrefabs;
     public GameObject[] merchantCat;
+    public GameObject[] speedRingPrefabs;
+
+    public float speedRingChance = 1f;
 
     [Header("5. Spawn Chances (0–1)")]
     [Tooltip("Balık spawnlanma olasılığı (Nadirliğe geçmeden önceki ana şans).")]
@@ -92,6 +95,7 @@ public class OceanChunkManager : MonoBehaviour
     private const string ENEMY_POINT = "EnemySpawnPoint";
     private const string CAT_POINT = "CatSpawnPoint";
     private const string CONTENT_CONTAINER = "Content";
+    private const string SPEEDRING_POINT = "SpeedRingSpawnPoint";
 
     // =================================================================================
     // UNITY METOTLARI
@@ -250,6 +254,21 @@ public class OceanChunkManager : MonoBehaviour
                     continue;
                 }
             }
+            if (speedRingPrefabs.Length > 0 && Random.value < speedRingChance)
+            {
+                Transform ringPoint = content.Find(SPEEDRING_POINT);
+                foreach (Transform ch in content)
+                {
+                    Debug.Log("Content child: " + ch.name);
+                }
+
+
+                if (ringPoint != null)
+                {
+                    SpawnGenericContentAt(content, SPEEDRING_POINT, speedRingPrefabs);
+                }
+            }
+
 
             // Power-Up kontrolü
             else if (powerUpPrefabs.Length > 0 && Random.value < powerUpChance)

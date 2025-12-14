@@ -3418,6 +3418,9 @@ MonoBehaviour:
   - {fileID: 6793040787934754305, guid: 7fd0770249028fd4bb441c84f1961738, type: 3}
   merchantCat:
   - {fileID: 8653146875997241755, guid: 275b9d8877fa04021bee3968f44e489b, type: 3}
+  speedRingPrefabs:
+  - {fileID: 6637522970108378573, guid: 5258de15ea1c4aa4b87c0ad3675581ed, type: 3}
+  speedRingChance: 0.5
   fishChance: 0.4
   powerUpChance: 0.3
   enemyChance: 0.2

@@ -95,4 +95,9 @@ public class ShipMovement : MonoBehaviour
         Vector3 rot = transform.eulerAngles;
         transform.rotation = Quaternion.Euler(rot.x, rot.y, sway);
     }
+    public float CurrentSpeed
+    {
+        get { return currentSpeed; }
+    }
+
 }

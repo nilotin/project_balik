@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 49528230825261756}
   - component: {fileID: 4142043248299154546}
   - component: {fileID: 1598388588674718330}
+  - component: {fileID: 4112166353149857081}
   m_Layer: 0
   m_Name: ice_efect1-Sheet_0
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a40bb3ae5bab1bf4ca44e85313028317, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -128,3 +129,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   anim: {fileID: 4142043248299154546}
+--- !u!114 &4112166353149857081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384413207743706589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea598eee48504954a88ad5d52562b35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BillboardYOnly

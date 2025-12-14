@@ -88,7 +88,7 @@ public class PowerUpCaster : MonoBehaviour
             return;
         }
 
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, (Screen.height / 2f) +5f, 0f);
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, (Screen.height / 2f), 0f);
         Ray ray = cam.ScreenPointToRay(screenCenter);
 
         Vector3 spawnPos = cam.transform.position + ray.direction * spawnForward;

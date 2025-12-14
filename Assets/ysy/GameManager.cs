@@ -4,12 +4,15 @@ public class GameManager : MonoBehaviour
 {
     public float speed = 0;
     public bool IsInvincible = false;
+    public bool IsUntouchable = false;
     [SerializeField]private int currency = 0;
     private int OverdrivePriceCur = 15;
     private int FrostChargePriceCur = 15;
     private int overDriveLevel = 1;
     public GameObject ship;
     public int freezeLevel = 1;
+    public GameObject collideEffect;
+    public GameObject IceCollideEffect;
 
     public static GameManager Instance
     {

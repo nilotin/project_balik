@@ -88,14 +88,18 @@ public class worm_enemy : MonoBehaviour
         
             if (shipHealth != null)
             {
-                // damageAmount'ı düşman tipine göre Inspector'da ayarlayın:
-                // Worm/Shark: 1
-                // Leviathan: 2
-                shipHealth.TakeDamage(damageAmount);
+                if(GetComponent<state>().isFrozen == false)
+                    shipHealth.TakeDamage(damageAmount);
+                else if(GameManager.Instance.IsUntouchable)
+                {;}
+                else
+                {
+                    int cur = GameManager.Instance.GetCurrency();
+                    GameManager.Instance.SetCurrency(cur+7);
+                    Destroy(gameObject); 
+                }
+                    
             }
-        
-            // Düşman hasar verdikten sonra yok edilebilir:
-            Destroy(gameObject); 
         }
     }
 }

@@ -83,12 +83,21 @@ public class enemy : MonoBehaviour
         {
             ShipHealth shipHealth = other.GetComponent<ShipHealth>();
         
-            if (shipHealth != null)
-            {
-                // damageAmount'ı düşman tipine göre Inspector'da ayarlayın:
-                // Worm/Shark: 1
-                // Leviathan: 2
+            if(GetComponent<state>().isFrozen == false && GameManager.Instance.IsInvincible == false && GameManager.Instance.IsUntouchable == false)
                 shipHealth.TakeDamage(damageAmount);
+            else if(GetComponent<state>().isFrozen)
+            {
+                Instantiate(GameManager.Instance.IceCollideEffect, transform.position,Quaternion.identity);
+                int cur = GameManager.Instance.GetCurrency();
+                GameManager.Instance.SetCurrency(cur+4);
+                Destroy(gameObject); 
+            }
+            else if(GameManager.Instance.IsInvincible)
+            {
+                //Instantiate(GameManager.Instance.collideEffect, transform.position,Quaternion.identity);
+                int cur = GameManager.Instance.GetCurrency();
+                GameManager.Instance.SetCurrency(cur+4);
+                Destroy(gameObject); 
             }
         
         }

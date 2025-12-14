@@ -17,6 +17,7 @@ public class enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+      
     }
 
     void Start()
@@ -29,7 +30,8 @@ public class enemy : MonoBehaviour
                 ship = found.transform;
             }
         }
-        ship = GameManager.Instance.ship.GetComponent<Transform>();
+        
+         ship = GameManager.Instance.ship.GetComponent<Transform>();
     }
 
     void FixedUpdate()
@@ -71,6 +73,7 @@ public class enemy : MonoBehaviour
             transform.position += dir * moveSpeed * Time.fixedDeltaTime;
         }
     }
+<<<<<<< HEAD
     
     // Örnek Düşman Çarpışma Scripti (Enemy.cs)
 
@@ -116,6 +119,8 @@ public class enemy : MonoBehaviour
         
         }
     }
+=======
+>>>>>>> bfc9c33c8fb4c59969c68a86cd26ec8be9fd5acc
 
     void Stop()
     {

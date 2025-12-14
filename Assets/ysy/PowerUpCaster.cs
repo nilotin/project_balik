@@ -16,6 +16,12 @@ public class PowerUpCaster : MonoBehaviour
     public float shootForce = 12f;
     public float spawnForward = 1.5f;
 
+    [Header("Spawn (Forward Based)")]
+    public float spawnDistance = 2.0f;
+    public float spawnYOffset = 0.0f;   // 2.5D düzleminde yukarı kaldırmak istersen
+    public bool lockYToShip = true;     // spawnY = ship.fixedY gibi
+
+
     void Awake()
     {
         if (cam == null)
@@ -80,11 +86,11 @@ public class PowerUpCaster : MonoBehaviour
         switch (powerUp)
         {
             case "ice":
-                FireFromScreenCenter(iceBombPrefab,"ice");
+                FireForwardFromShip(iceBombPrefab,"ice");
                 return true;
 
             case "vortex":
-                FireFromScreenCenter(vortexPrefab,"vortex");
+                FireForwardFromShip(vortexPrefab,"vortex");
                 return true;
 
             case "lightning":
@@ -101,31 +107,50 @@ public class PowerUpCaster : MonoBehaviour
         }
     }
 
-    void FireFromScreenCenter(GameObject prefab,string name)
+    void FireForwardFromShip(GameObject prefab, string name)
     {
-        if (prefab == null || cam == null)
+        if (prefab == null)
         {
             return;
         }
 
+        // 1) Yön: ship'in baktığı yön
+        Vector3 dir = transform.forward;
+        dir.y = 0f;
+        dir.Normalize();
 
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-      
-        Ray ray = cam.ScreenPointToRay(screenCenter);
+        // 2) Pozisyon: ship’in biraz önü
+        Vector3 spawnPos = transform.position + dir * spawnDistance;
 
-        Vector3 spawnPos = cam.transform.position + ray.direction * spawnForward;
-            if(name == "vortex")
-        spawnPos.y += 0.5f; // ✅ garanti yukarıda başlasın
+        // 2.5D düzleminde sabitle
+        if (lockYToShip)
+        {
+            spawnPos.y = transform.position.y;
+        }
 
+        // Ek offset (vortex’i biraz yukarı koymak vs.)
+        spawnPos.y = 0;
 
-        GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
+        if (name == "vortex")
+        {
+            spawnPos.y += 0.5f;
+        }
 
+        // 3) Rotasyon: ileri baksın (2.5D düzgün)
+        Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);
+
+        GameObject obj = Instantiate(prefab, spawnPos, rot);
+
+        // 4) Fırlatma
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            // Unity 6 -> linearVelocity, Unity 2021/2022 -> velocity
-            rb.linearVelocity = ray.direction * shootForce;
-            // rb.linearVelocity = ray.direction * shootForce;
+            // Unity 2021/2022:
+            rb.linearVelocity = dir * shootForce;
+
+            // Unity 6 ise:
+            // rb.linearVelocity = dir * shootForce;
         }
     }
+
 }

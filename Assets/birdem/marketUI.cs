@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarketUI : MonoBehaviour
 {
@@ -26,6 +27,13 @@ public class MarketUI : MonoBehaviour
     public UnityEngine.UI.Image frostBtnImage;
     public UnityEngine.UI.Image vortexBtnImage;
     public UnityEngine.UI.Image lightningBtnImage;
+
+    [Header("Button Background Images (turuncu bar olan Image)")]
+    public Image overdriveBg;
+    public Image frostBg;
+    public Image vortexBg;
+    public Image lightningBg;
+
 
     private Sprite GetSpriteForLevel(int level)
     {
@@ -71,9 +79,22 @@ public class MarketUI : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.SetCurrency(50);
+        //GameManager.Instance.SetCurrency(100);
+        ResetAllPowerUpLevelsForTest(); // <-- TEST İÇİN
         Refresh();
     }
+
+    private void ResetAllPowerUpLevelsForTest()
+{
+    PlayerPrefs.DeleteKey("PU_LEVEL_Overdrive");
+    PlayerPrefs.DeleteKey("PU_LEVEL_FrostCharge");
+    PlayerPrefs.DeleteKey("PU_LEVEL_Vortex");
+    PlayerPrefs.DeleteKey("PU_LEVEL_Lightning");
+
+    PlayerPrefs.Save();
+    Debug.Log("ALL POWER UP LEVELS RESET (TEST MODE)");
+}
+
 
     public void BuyOverdrive()
     {
@@ -84,23 +105,20 @@ public class MarketUI : MonoBehaviour
     public void BuyFrostCharge()
     {
         int price = GameManager.Instance.FrostChargePrice();
-        TryBuyLevelUp("Frost Charge", price);
+        TryBuyLevelUp("FrostCharge", price);
     }
 
      public void BuyVortex()
     {
-        //int price = GameManager.Instance.FrostChargePrice();
-        int price = 10;
+        int price = GameManager.Instance.VortexPrice();
         TryBuyLevelUp("Vortex", price);
         
     }
 
      public void BuyLightning()
     {
-        //int price = GameManager.Instance.FrostChargePrice();
-        int price = 15;
+        int price = GameManager.Instance.LightningPrice();
         TryBuyLevelUp("Lightning", price);
-        
     }
 
 private void TryBuyLevelUp(string id, int basePrice)
@@ -155,14 +173,40 @@ private void TryBuyLevelUp(string id, int basePrice)
         UpdateLockOverlay("Vortex", vortexLock);
         UpdateLockOverlay("Lightning", lightningLock);
 
+        UpdateLevelBar("Overdrive", overdriveBg);
+        UpdateLevelBar("FrostCharge", frostBg);
+        UpdateLevelBar("Vortex", vortexBg);
+        UpdateLevelBar("Lightning", lightningBg);
+
+
         UpdateButtonVisual("Overdrive", overdriveBtnImage);
         UpdateButtonVisual("FrostCharge", frostBtnImage);
         UpdateButtonVisual("Vortex", vortexBtnImage);
         UpdateButtonVisual("Lightning", lightningBtnImage);
 
-        Debug.Log($"Overdrive Lv {GetLevel("Overdrive")} | FrostCharge Lv {GetLevel("FrostCharge")} | Vortex Lv {GetLevel("Vortex")} | Lightning Lv {GetLevel("Lightning")}");
+       // Debug.Log($"Overdrive Lv {GetLevel("Overdrive")} | FrostCharge Lv {GetLevel("FrostCharge")} | Vortex Lv {GetLevel("Vortex")} | Lightning Lv {GetLevel("Lightning")}");
+        Debug.Log("Overdrive level = " + GetLevel("Overdrive"));
+
 
     }
+
+    private void UpdateLevelBar(string id, Image bg)
+{
+    if (bg == null) return;
+
+    int level = GetLevel(id);
+
+    switch (level)
+    {
+        case 0: bg.sprite = buttonPlain; break;
+        case 1: bg.sprite = buttonLevel1; break;
+        case 2: bg.sprite = buttonLevel2; break;
+        default: bg.sprite = buttonLevel3; break; // 3+
+    }
+
+    bg.preserveAspect = true;
+}
+
 
 private void UpdateLockOverlay(string id, GameObject lockObj)
 {

@@ -3,63 +3,32 @@ using System.Collections;
 
 public class powUpSpeed : MonoBehaviour
 {
+    public float impulseStrength = 20f;
+    public float impulseDuration = 0.25f;
+    public float invincibleDuration = 0.4f;
 
-    private Coroutine slowDownRoutine;
-    private float speedBefore;
-    private float speed;
-    private float currentSpeed;
-    
-
+    private Coroutine invRoutine;
 
     public void powerUp()
     {
+        ShipMovement move = GameManager.Instance.ship.GetComponent<ShipMovement>();
+        if (move != null)
+        {
+            move.AddImpulse(move.transform.forward, impulseStrength, impulseDuration);
+        }
+
+        if (invRoutine != null)
+        {
+            StopCoroutine(invRoutine);
+        }
+
+        invRoutine = StartCoroutine(InvincibleFor(invincibleDuration));
+    }
+
+    private IEnumerator InvincibleFor(float seconds)
+    {
         GameManager.Instance.IsInvincible = true;
-        int level = GameManager.Instance.GetOverDriveLevel();
-        BoostThenStop();
-    }
-
-
-    public void BoostThenStop()
-    {
-        if (slowDownRoutine != null)
-        {
-            StopCoroutine(slowDownRoutine);
-        }
-
-        slowDownRoutine = StartCoroutine(BoostAndSlow());
-    }
-
-    private IEnumerator BoostAndSlow()
-    {
-        speedBefore = GameManager.Instance.GetSpeed();
-
-        float startSpeed = speedBefore * 3f;
-        float targetSpeed = speedBefore;
-        float duration = 5f;
-        float elapsedTime = 0f;
-
-        // Boostu anında uygula
-        GameManager.Instance.SetSpeed(startSpeed);
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / duration;
-
-            currentSpeed = Mathf.Lerp(startSpeed, targetSpeed, t);
-
-            // Güvenlik: asla eski hızı aşmasın
-            currentSpeed = Mathf.Max(currentSpeed, targetSpeed);
-
-            GameManager.Instance.SetSpeed(currentSpeed);
-
-            yield return null;
-        }
-
-        // Final garanti
-        GameManager.Instance.SetSpeed(speedBefore);
+        yield return new WaitForSeconds(seconds);
         GameManager.Instance.IsInvincible = false;
     }
-
 }
-

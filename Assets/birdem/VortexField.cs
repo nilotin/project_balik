@@ -5,36 +5,36 @@ public class VortexField : MonoBehaviour
 {
     [Header("Vortex Settings")]
     public float radius = 8f;
-    public float pullStrength = 18f;      // çekiş gücü
-    public bool lockY = true;             // 2.5D için Y kilit
-    public float yOffset = 0f;            // merkez yüksekliği
+    public float pullStrength = 18f;
+    public bool lockY = true;
+    public float yOffset = 0f;
 
     [Header("Affect")]
-    public bool disableEnemyScriptWhilePulling = false; // true yaparsan enemy kovalamayı keser
+    public bool disableEnemyScriptWhilePulling = false;
 
     public Animator anim;
 
     void Start()
     {
-        int cooldown = GameManager.Instance.vortexLevel;
-        StartCoroutine(Dest(cooldown));
+        int level = GameManager.Instance.vortexLevel;
+        StartCoroutine(Dest(level));
     }
 
     IEnumerator Dest(int level)
     {
         float cooldown = 3f;
-        if(level == 1)
-            cooldown = 3f;
-        else if(level == 2)
-            cooldown =5f;
-        else if(level == 3)
-            cooldown = 7f;
+
+        if (level == 1) cooldown = 3f;
+        else if (level == 2) cooldown = 5f;
+        else if (level == 3) cooldown = 7f;
 
         yield return new WaitForSeconds(cooldown);
-        anim.SetTrigger("Disappear");
+
+        if (anim != null)
+            anim.SetTrigger("Disappear");
+
         yield return new WaitForSeconds(0.3f);
         finish();
-
     }
 
     public void finish()
@@ -49,42 +49,71 @@ public class VortexField : MonoBehaviour
         Collider[] cols = Physics.OverlapSphere(center, radius);
         for (int i = 0; i < cols.Length; i++)
         {
-            enemy e = cols[i].GetComponentInParent<enemy>();
-            if (e == null) continue;
+            GameObject obj = cols[i].gameObject;
 
-            Rigidbody rb = e.GetComponent<Rigidbody>();
-            if (rb == null) continue;
+            // 🔹 SADECE enemy ve worm tag’li objeler
+            if (!obj.CompareTag("shark") && !obj.CompareTag("worm"))
+                continue;
 
+            enemy enemyScript = obj.GetComponent<enemy>();
+            worm_enemy wormScript = obj.GetComponent<worm_enemy>();
+
+            // İkisinden biri yoksa çekme
+            if (enemyScript == null && wormScript == null)
+                continue;
+
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            if (rb == null)
+                continue;
+
+            // 🔹 Scriptleri kapat
             if (disableEnemyScriptWhilePulling)
-                e.enabled = false;
+            {
+                if (enemyScript != null)
+                    enemyScript.enabled = false;
+
+                if (wormScript != null)
+                    wormScript.enabled = false;
+            }
 
             Vector3 target = center;
             if (lockY)
                 target.y = rb.position.y;
 
-            Vector3 dir = (target - rb.position);
+            Vector3 dir = target - rb.position;
             float dist = dir.magnitude;
-            if (dist < 0.01f) continue;
+            if (dist < 0.01f)
+                continue;
 
-            dir /= dist;
+            dir.Normalize();
 
-            // Merkeze yaklaştıkça biraz yumuşasın
             float strength = pullStrength * Mathf.Clamp01(dist / radius);
 
-            // Unity 6: linearVelocity kullanıyorsun, o yüzden burada da onu setleyelim
+            // Unity 6
             rb.linearVelocity = dir * strength;
+            // Unity 2021/2022 ise:
+            // rb.velocity = dir * strength;
         }
     }
 
     private void OnDisable()
     {
-        // Vortex yok olunca enemy scriptlerini geri açmak istersen:
-        if (!disableEnemyScriptWhilePulling) return;
+        if (!disableEnemyScriptWhilePulling)
+            return;
 
+        // 🔹 Kapatılan scriptleri geri aç
         enemy[] enemies = Object.FindObjectsByType<enemy>(FindObjectsSortMode.None);
         foreach (var e in enemies)
         {
-            if (e != null) e.enabled = true;
+            if (e != null)
+                e.enabled = true;
+        }
+
+        worm_enemy[] worms = Object.FindObjectsByType<worm_enemy>(FindObjectsSortMode.None);
+        foreach (var w in worms)
+        {
+            if (w != null)
+                w.enabled = true;
         }
     }
 

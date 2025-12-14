@@ -45,6 +45,8 @@ public class ShipHealth : MonoBehaviour
 
     private void Die()
     {
+
+        GameManager.Instance.SaveAll();
         Debug.Log("Gemi batırıldı! Oyun Bitti.");
 
         GameOverUI gameOverUI = FindFirstObjectByType<GameOverUI>();

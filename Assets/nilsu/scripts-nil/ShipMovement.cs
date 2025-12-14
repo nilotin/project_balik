@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class ShipMovement : MonoBehaviour
 {
@@ -95,4 +96,44 @@ public class ShipMovement : MonoBehaviour
         Vector3 rot = transform.eulerAngles;
         transform.rotation = Quaternion.Euler(rot.x, rot.y, sway);
     }
+    public float CurrentSpeed
+    {
+        get { return currentSpeed; }
+    }
+    private bool isKnockbacked;
+
+    public void ApplyKnockback(Vector3 direction, float force, float duration)
+    {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
+        StartCoroutine(KnockbackRoutine(direction, force, duration));
+    }
+
+    private IEnumerator KnockbackRoutine(Vector3 direction, float force, float duration)
+    {
+        isKnockbacked = true;
+
+        // ShipMovement input ve kontrolü kilitle
+        enabled = false;
+
+        float elapsed = 0f;
+
+        direction.y = 0f;
+        direction.Normalize();
+
+        while (elapsed < duration)
+        {
+            transform.position += direction * force * Time.deltaTime;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        enabled = true;
+        isKnockbacked = false;
+    }
+
+
 }

@@ -73,6 +73,51 @@ public class enemy : MonoBehaviour
             transform.position += dir * moveSpeed * Time.fixedDeltaTime;
         }
     }
+    
+    // Örnek Düşman Çarpışma Scripti (Enemy.cs)
+
+// Düşmanın tipine göre hasar miktarını belirle
+    public int damageAmount = 1; // Varsayılan: Worm ve Shark için 1
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ship")) // Geminizin tag'inin "Ship" olduğunu varsayıyorum
+        {
+            ShipHealth shipHealth = other.GetComponent<ShipHealth>();
+        
+            if(GetComponent<state>().isFrozen == false && GameManager.Instance.IsInvincible == false && GameManager.Instance.IsUntouchable == false)
+            {
+                
+                shipHealth.TakeDamage(damageAmount);    
+
+                Vector3 knockDir =
+                    transform.position + other.transform.position;
+
+                ShipMovement move = GameManager.Instance.ship.GetComponent<ShipMovement>();
+                if (move != null)
+                {
+                    move.ApplyKnockback(knockDir, GameManager.Instance.knockbackForce, GameManager.Instance.knockbackDuration);
+                }
+
+            }
+                
+            else if(GetComponent<state>().isFrozen)
+            {
+                Instantiate(GameManager.Instance.IceCollideEffect, transform.position,Quaternion.identity);
+                int cur = GameManager.Instance.GetCurrency();
+                GameManager.Instance.SetCurrency(cur+4);
+                Destroy(gameObject); 
+            }
+            else if(GameManager.Instance.IsInvincible)
+            {
+                //Instantiate(GameManager.Instance.collideEffect, transform.position,Quaternion.identity);
+                int cur = GameManager.Instance.GetCurrency();
+                GameManager.Instance.SetCurrency(cur+4);
+                Destroy(gameObject); 
+            }
+        
+        }
+    }
 
     void Stop()
     {

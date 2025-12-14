@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3283128131708352212}
   - component: {fileID: 6768264924043121777}
   - component: {fileID: 8641857534471782944}
+  - component: {fileID: 6070865109478637408}
   m_Layer: 0
   m_Name: iceOnSurface
   m_TagString: Untagged
@@ -183,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::icePowerUp
   anim: {fileID: 2707066647760018586}
-  iceObj: {fileID: 0}
+  iceObj: {fileID: 1384413207743706589, guid: 55c8b9525fe2f2e428dd7ec5840e3f2b, type: 3}
 --- !u!54 &8641857534471782944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -209,5 +210,21 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6070865109478637408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141097097614518075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d5f9977f828414985eda6aea7b45fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  shipTag: ship
+  minSlideSpeed: 12
+  speedMultiplier: 1.8
+  lockY: 1

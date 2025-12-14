@@ -68,6 +68,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7194602523264148516, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7561173950776444774}
+    - targetCorrespondingSourceObject: {fileID: 7194602523264148516, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5738246963811506082}
   m_SourcePrefab: {fileID: 100100000, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
 --- !u!1 &1896020213683401470 stripped
 GameObject:
@@ -89,3 +92,15 @@ MonoBehaviour:
   explosionPrefab: {fileID: 2181603500648626631, guid: 6d6bcdd0babfe85499995e1e68724951, type: 3}
   extraGravity: 2
   groundY: 0
+--- !u!114 &5738246963811506082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896020213683401470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea598eee48504954a88ad5d52562b35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BillboardYOnly

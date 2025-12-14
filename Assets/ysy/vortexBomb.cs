@@ -30,6 +30,9 @@ public class vortexBomb : MonoBehaviour
 
         if (transform.position.y <= groundY)
         {
+            Vector2 newPos = transform.position;
+            newPos.y = 0;
+            transform.position = newPos;
             Explode();
         }
     }

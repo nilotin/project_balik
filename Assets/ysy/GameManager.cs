@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         return OverdrivePriceCur;
     }  
+<<<<<<< HEAD
 
     public int LightningPrice()
     {
@@ -88,4 +90,20 @@ public class GameManager : MonoBehaviour
     {
         return VortexPriceCur;
     }
+=======
+    
+    public void AddCurrency(int amount)
+    {
+        currency += amount;
+        UpdateCurrencyUI();
+    }
+
+    [SerializeField] private TMP_Text currencyText;
+
+    void UpdateCurrencyUI()
+    {
+        currencyText.text = currency.ToString();
+    }
+
+>>>>>>> bc1002fbef07c059b13e8af8eba7ea11dfcc380c
 }

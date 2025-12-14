@@ -111,8 +111,9 @@ MonoBehaviour:
   shipTag: ship
   moveSpeed: 3
   chaseRange: 10
-  stopDistance: 2.5
+  stopDistance: 0.5
   lockY: 1
+  damageAmount: 1
 --- !u!114 &2594063899253798726
 MonoBehaviour:
   m_ObjectHideFlags: 0

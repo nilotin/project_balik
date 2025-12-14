@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8517647231172979675}
   - component: {fileID: 1463557722765555370}
   - component: {fileID: 5567771719583707617}
+  - component: {fileID: 1170223930776520245}
+  - component: {fileID: 6110772949877755096}
   m_Layer: 0
   m_Name: worm_attack
   m_TagString: Untagged
@@ -136,3 +138,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.20153213, y: 0.45340872, z: 0.2}
   m_Center: {x: -0.01528132, y: -0.3302318, z: 0}
+--- !u!114 &1170223930776520245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540454851187280729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b43dec01080e054391790f187407774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &6110772949877755096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6540454851187280729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea598eee48504954a88ad5d52562b35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BillboardYOnly

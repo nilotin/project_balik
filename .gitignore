@@ -1,5 +1,7 @@
-# This .gitignore file should be placed at the root of your Unity project
-# Based on https://github.com/github/gitignore/blob/main/Unity.gitignore
+############################################
+# Unity — FINAL .gitignore
+# Place at the root of the Unity project
+############################################
 
 # =========================
 # Unity generated folders
@@ -11,60 +13,64 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
-
-# Unity logs
-*.log
-
-# Memory captures
-[Mm]emoryCaptures/
-
-# Recordings
+[Mm]emory[Cc]aptures/
 [Rr]ecordings/
 
-# Addressables
-/ServerData
-/[Aa]ssets/StreamingAssets/aa*
-/[Aa]ssets/AddressableAssetsData/link.xml*
-/[Aa]ssets/Addressables_Temp*
-/[Aa]ssets/AddressableAssetsData/*/*.bin*
-
-# Visual Scripting
-/[Aa]ssets/Unity.VisualScripting.Generated/
-
-# JetBrains Rider
-.idea/
-*.DotSettings.user
-/[Aa]ssets/Plugins/Editor/JetBrains*
-
-# Visual Studio / Rider
-.vs/
+# =========================
+# Unity auto-generated files
+# =========================
 *.csproj
 *.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
+*.unityproj
 *.pidb
 *.booproj
 *.svd
-*.unityproj
 *.opendb
 *.VC.db
+*.user
+*.userprefs
+*.suo
+*.tmp
+*.log
 
-# Gradle
-.gradle/
+# =========================
+# Addressables
+# =========================
+/ServerData
+/[Aa]ssets/StreamingAssets/aa*
+/[Aa]ssets/AddressableAssetsData/**
+/[Aa]ssets/Addressables_Temp*
 
+# =========================
+# Visual Scripting
+# =========================
+/[Aa]ssets/Unity.VisualScripting.Generated/
+
+# =========================
+# IDEs (Rider / Visual Studio)
+# =========================
+.idea/
+.vs/
+*.DotSettings.user
+/[Aa]ssets/Plugins/Editor/JetBrains*
+
+# =========================
+# Build outputs
+# =========================
+*.apk
+*.aab
+*.app
+*.exe
+*.unitypackage
+
+# =========================
 # Crash reports
+# =========================
 sysinfo.txt
 mono_crash.*
 
-# Builds
-*.apk
-*.aab
-*.unitypackage
-*.app
-
-# macOS
+# =========================
+# OS junk
+# =========================
 .DS_Store
-
-
+Thumbs.db

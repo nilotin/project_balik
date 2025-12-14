@@ -80,16 +80,20 @@ public class PowerUpCaster : MonoBehaviour
         switch (powerUp)
         {
             case "ice":
-                FireFromScreenCenter(iceBombPrefab);
+                FireFromScreenCenter(iceBombPrefab,"ice");
                 return true;
 
             case "vortex":
-                FireFromScreenCenter(vortexPrefab);
+                FireFromScreenCenter(vortexPrefab,"vortex");
                 return true;
 
             case "lightning":
                 GetComponent<lightningPow>().StartCoroutine(GetComponent<lightningPow>().ChainLightning(transform.position));
                 return true;
+            case "overdrive":
+                GetComponent<powUpSpeed>().powerUp();
+                return true;
+
 
             default:
                 Debug.LogWarning("Unknown powerUp: " + powerUp);
@@ -97,19 +101,24 @@ public class PowerUpCaster : MonoBehaviour
         }
     }
 
-    void FireFromScreenCenter(GameObject prefab)
+    void FireFromScreenCenter(GameObject prefab,string name)
     {
         if (prefab == null || cam == null)
         {
             return;
         }
 
+
         Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+      
         Ray ray = cam.ScreenPointToRay(screenCenter);
 
         Vector3 spawnPos = cam.transform.position + ray.direction * spawnForward;
+            if(name == "vortex")
+        spawnPos.y += 0.5f; // ✅ garanti yukarıda başlasın
 
-        GameObject obj = Instantiate(prefab, spawnPos, Quaternion.LookRotation(ray.direction));
+
+        GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
 
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         if (rb != null)

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class lightningPow : MonoBehaviour
 {
-
-
     [Header("Targeting")]
-    public string enemyTag = "shark";     // senin shark tag'in neyse birebir yaz
-    public float firstTargetRange = 12f;  // ship'ten ilk hedef arama
-    public float jumpRange = 8f;          // sekme mesafesi
-    public int maxChains = 3;             // kaç hedef (ilk dahil)
+    public string[] enemyTags = { "shark", "worm", "leviathan" };
+    public float firstTargetRange = 12f;
+    public float jumpRange = 8f;
+    public int maxChains = 3;
     public float hitDelay = 0.07f;
 
     [Header("Effect")]
-    public bool destroyOnHit = true;      // TRUE: öldür, FALSE: stun
-    public float stunSeconds = 1.5f;      // destroyOff iken kullanılır
+    public bool destroyOnHit = true;
+    public float stunSeconds = 1.5f;
+
     public GameObject lightning;
 
     public GameObject lightningLinePrefab;
@@ -23,105 +22,157 @@ public class lightningPow : MonoBehaviour
 
     public IEnumerator ChainLightning(Vector3 origin)
     {
-        HashSet<enemy> hit = new HashSet<enemy>();
-        enemy current = FindClosestEnemy(origin, firstTargetRange, hit);
-        Vector3 spawnPoint = current.transform.position;
-        spawnPoint.y+=1f;
-        Instantiate(lightning,spawnPoint ,Quaternion.identity);
-        yield return new WaitForSeconds(0.3f);
+        HashSet<GameObject> hit = new HashSet<GameObject>();
 
+        GameObject current = FindClosestTarget(origin, firstTargetRange, hit);
+
+        if (current == null)
+        {
+            yield break;
+        }
+
+        Vector3 spawnPoint = current.transform.position;
+        spawnPoint.y += 1f;
+        Instantiate(lightning, spawnPoint, Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
 
         int count = 0;
 
-       while (current != null && count < maxChains)
+        while (current != null && count < maxChains)
         {
             Vector3 lastPos = current.transform.position;
 
-            // <<< İŞTE BURASI >>>
-            if (count >= 0) // TEST
-            {
-                DrawLightning(origin, lastPos);
-            }
+            DrawLightning(origin, lastPos);
 
-            HitEnemy(current);
+            HitTarget(current);
             hit.Add(current);
             count++;
 
             if (hitDelay > 0f)
+            {
                 yield return new WaitForSeconds(hitDelay);
+            }
 
             origin = lastPos;
-            current = FindClosestEnemy(origin, jumpRange, hit);
-        }
-
-    }
-
-  private enemy FindClosestEnemy(Vector3 from, float range, HashSet<enemy> ignore)
-{
-    // Unity 6: sahnedeki tüm enemy'leri bul
-    enemy[] enemies = Object.FindObjectsByType<enemy>(FindObjectsSortMode.None);
-
-    enemy best = null;
-    float bestDist = range;
-
-    foreach (var e in enemies)
-    {
-        if (e == null) continue;
-        if (ignore.Contains(e)) continue;
-
-        float d = Vector3.Distance(from, e.transform.position);
-        if (d <= bestDist)
-        {
-            bestDist = d;
-            best = e;
+            current = FindClosestTarget(origin, jumpRange, hit);
         }
     }
 
-    Debug.Log("Enemies found: " + enemies.Length + " best=" + (best ? best.name : "NONE"));
-    return best;
-}
-
-
-    private void HitEnemy(enemy e)
+    private GameObject FindClosestTarget(Vector3 from, float range, HashSet<GameObject> ignore)
     {
-        if (e == null) return;
+        // range içindeki collider'ları topla
+        Collider[] cols = Physics.OverlapSphere(from, range);
 
-        Debug.Log("LIGHTNING HIT: " + e.name);
+        GameObject best = null;
+        float bestDist = range;
 
-        if (destroyOnHit)
+        foreach (var c in cols)
         {
-            // EN ÖNEMLİ: root/parent silinsin diye enemy'nin gameObject'ini sil
-            Destroy(e.gameObject);
+            if (c == null)
+            {
+                continue;
+            }
+
+            // child collider olabilir → root/pivot olarak parent objeyi al
+            GameObject go = c.attachedRigidbody != null ? c.attachedRigidbody.gameObject : c.gameObject;
+
+            if (go == null)
+            {
+                continue;
+            }
+
+            if (ignore.Contains(go))
+            {
+                continue;
+            }
+
+            if (!HasAnyTag(go))
+            {
+                continue;
+            }
+
+            float d = Vector3.Distance(from, go.transform.position);
+            if (d <= bestDist)
+            {
+                bestDist = d;
+                best = go;
+            }
+        }
+
+        return best;
+    }
+
+    private bool HasAnyTag(GameObject go)
+    {
+        for (int i = 0; i < enemyTags.Length; i++)
+        {
+            if (go.CompareTag(enemyTags[i]))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void HitTarget(GameObject target)
+    {
+        if (target == null)
+        {
             return;
         }
 
-        // Stun mode: enemy scriptini kapat, rigidbody'yi durdur, sonra aç
-        StartCoroutine(StunEnemy(e, stunSeconds));
+        Debug.Log("LIGHTNING HIT: " + target.name + " tag=" + target.tag);
+
+        if (destroyOnHit)
+        {
+            Destroy(target);
+            return;
+        }
+
+        StartCoroutine(StunTarget(target, stunSeconds));
     }
 
-    private IEnumerator StunEnemy(enemy e, float seconds)
+    private IEnumerator StunTarget(GameObject target, float seconds)
     {
-        if (e == null) yield break;
+        if (target == null)
+        {
+            yield break;
+        }
 
-        // enemy hareketini durdur
-        e.enabled = false;
+        // Hangi tipse onu disable et
+        enemy shark = target.GetComponentInParent<enemy>();
+        worm_enemy worm = target.GetComponentInParent<worm_enemy>();
+        //leviathan_enemy lev = target.GetComponentInParent<leviathan_enemy>(); // <- script adın farklıysa değiştir
 
-        Rigidbody rb = e.GetComponent<Rigidbody>();
+        if (shark != null) shark.enabled = false;
+        if (worm != null) worm.enabled = false;
+        //if (lev != null) lev.enabled = false;
+
+        Rigidbody rb = target.GetComponent<Rigidbody>();
         if (rb != null)
         {
+            // Unity 2021/2022: velocity
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+
+            // Unity 6 ise istersen:
+            // rb.linearVelocity = Vector3.zero;
         }
 
         yield return new WaitForSeconds(seconds);
 
-        if (e != null)
-            e.enabled = true;
+        if (target != null)
+        {
+            if (shark != null) shark.enabled = true;
+            if (worm != null) worm.enabled = true;
+            //if (lev != null) lev.enabled = true;
+        }
     }
 
     private void DrawLightning(Vector3 from, Vector3 to)
     {
-         Debug.DrawLine(from + Vector3.up * 0.5f, to + Vector3.up * 0.5f, Color.cyan, 1.0f);
+        Debug.DrawLine(from + Vector3.up * 0.5f, to + Vector3.up * 0.5f, Color.cyan, 1.0f);
 
         if (lightningLinePrefab == null)
         {
@@ -144,15 +195,11 @@ public class lightningPow : MonoBehaviour
             return;
         }
 
-        Debug.Log("Drawing line from " + from + " to " + to);
-
         lr.positionCount = 2;
-        lr.useWorldSpace = true; // garanti
+        lr.useWorldSpace = true;
         lr.SetPosition(0, from + Vector3.up * 0.5f);
         lr.SetPosition(1, to + Vector3.up * 0.5f);
 
         Destroy(lineObj, lineLifeTime);
     }
-
-
 }

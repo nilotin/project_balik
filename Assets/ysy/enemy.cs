@@ -110,7 +110,7 @@ public class enemy : MonoBehaviour
             }
             else if(GameManager.Instance.IsInvincible)
             {
-                //Instantiate(GameManager.Instance.collideEffect, transform.position,Quaternion.identity);
+                Instantiate(GameManager.Instance.collideEffect, transform.position,Quaternion.identity);
                 int cur = GameManager.Instance.GetCurrency();
                 GameManager.Instance.SetCurrency(cur+4);
                 Destroy(gameObject); 

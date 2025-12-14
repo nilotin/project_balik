@@ -13,6 +13,7 @@ public class powUpsOnHand : MonoBehaviour
     public Sprite iceIcon;
     public Sprite vortexIcon;
     public Sprite lightningIcon;
+    public Sprite overdrive;
 
     private List<string> inventory = new List<string>();
 
@@ -82,6 +83,8 @@ public class powUpsOnHand : MonoBehaviour
 
             case "lightning":
                 return lightningIcon;
+            case "overdrive":
+                return overdrive;
         }
 
         return null;

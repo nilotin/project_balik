@@ -8,21 +8,10 @@ public class powUpSpeed : MonoBehaviour
     private float speedBefore;
     private float speed;
     private float currentSpeed;
-    public Collider col;
-    public GameObject spriteObject;
     
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("ship"))
-        {
-            col.enabled = false;
-            spriteObject.SetActive(false);
-            powerUp(other.gameObject);
-        }
-    }
 
-    private void powerUp(GameObject ship)
+    public void powerUp()
     {
         GameManager.Instance.IsInvincible = true;
         int level = GameManager.Instance.GetOverDriveLevel();

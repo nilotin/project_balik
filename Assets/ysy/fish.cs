@@ -28,6 +28,8 @@ public class fish : MonoBehaviour
 
         int value = GetFishValue();
         GameManager.Instance.AddCurrency(value);
+        
+        SoundManager.Instance?.PlaySFX(SoundManager.Instance.fishPickup);
 
         Destroy(gameObject);
     }

@@ -25,6 +25,8 @@ public class ShipMovement : MonoBehaviour
 
     private float currentSpeed = 0f;
     private float currentTurnSpeed = 0f; // 🔥 kavisli dönüşün anahtarı
+    private Vector3 impulseVelocity = Vector3.zero;
+    private Coroutine impulseRoutine;
 
     void Start()
     {
@@ -62,7 +64,8 @@ public class ShipMovement : MonoBehaviour
         );
 
         // ================= MOVE =================
-        transform.position += transform.forward * currentSpeed * Time.deltaTime;
+        transform.position += (transform.forward * currentSpeed + impulseVelocity) * Time.deltaTime;
+
 
         // ================= TURN INERTIA (KAVİS) =================
         float speedFactor = Mathf.Abs(currentSpeed) / safeMaxSpeed;
@@ -134,6 +137,49 @@ public class ShipMovement : MonoBehaviour
         enabled = true;
         isKnockbacked = false;
     }
+
+
+    public void AddImpulse(Vector3 direction, float strength, float duration)
+    {
+        direction.y = 0f;
+
+        if (direction.sqrMagnitude < 0.0001f)
+        {
+            direction = transform.forward;
+            direction.y = 0f;
+        }
+
+        direction.Normalize();
+
+        if (impulseRoutine != null)
+        {
+            StopCoroutine(impulseRoutine);
+        }
+
+        impulseRoutine = StartCoroutine(ImpulseRoutine(direction, strength, duration));
+    }
+
+    private IEnumerator ImpulseRoutine(Vector3 dir, float strength, float duration)
+    {
+        float t = 0f;
+
+        while (t < duration)
+        {
+            float x = t / duration;
+
+            // Ease-Out Quad: başta sert, sonra yumuşayarak azalır
+            float ease = 1f - (x * x);
+
+            impulseVelocity = dir * strength * ease;
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        impulseVelocity = Vector3.zero;
+        impulseRoutine = null;
+    }
+
 
 
 }

@@ -414,9 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695c6f32ed16937459f1301d404b970d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::powUpSpeed
-  impulseStrength: 40
-  impulseDuration: 1
-  invincibleDuration: 1
 --- !u!114 &43518040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,14 +428,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpCaster
   cam: {fileID: 0}
   inventory: {fileID: 43518037}
-  iceBombPrefab: {fileID: 3910812050488793076, guid: 39a109e44ff17724cb023be8f25e3500, type: 3}
-  vortexPrefab: {fileID: 2181603500648626631, guid: 6d6bcdd0babfe85499995e1e68724951, type: 3}
+  iceBombPrefab: {fileID: 7194602523264148516, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
+  vortexPrefab: {fileID: 1896020213683401470, guid: 517e57c4f3a20694296448072199aad3, type: 3}
   lightningPrefab: {fileID: 0}
   shootForce: 12
   spawnForward: 1.5
-  spawnDistance: 7
-  spawnYOffset: 0
-  lockYToShip: 1
 --- !u!114 &43518041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,15 +1033,15 @@ RectTransform:
   m_GameObject: {fileID: 977871686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.29232064, y: 0.21924047, z: 0.29232064}
+  m_LocalScale: {x: 1, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1659270938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197, y: 0}
-  m_SizeDelta: {x: 600, y: 337}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 730, y: 330}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &977871688
 MonoBehaviour:
@@ -1135,10 +1129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1216,15 +1210,15 @@ RectTransform:
   m_GameObject: {fileID: 1387154329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.29232064, y: 0.21924047, z: 0.29232064}
+  m_LocalScale: {x: 1, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1659270938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 600, y: 337}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 660, y: 330}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1387154331
 MonoBehaviour:
@@ -1580,11 +1574,11 @@ RectTransform:
   - {fileID: 1995424538}
   m_Father: {fileID: 1305650342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659270939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,9 +1674,6 @@ MonoBehaviour:
   fogStrength: 0.6
   powerUpPrefabs:
   - {fileID: 7401029315344581936, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
-  - {fileID: 7852268149353461370, guid: 63799e34157787c479a8b4dda935bafa, type: 3}
-  - {fileID: 318979412807782355, guid: 48fe5f0d20fb154439ef6ff2782d6a3e, type: 3}
-  - {fileID: 8545019306264863144, guid: cd1193b121db3db4d96ea43bd0ccd987, type: 3}
   enemyPrefabs:
   - {fileID: 6793530407499020542, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
   - {fileID: 6793040787934754305, guid: 7fd0770249028fd4bb441c84f1961738, type: 3}
@@ -1751,15 +1742,15 @@ RectTransform:
   m_GameObject: {fileID: 1995424537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.29232064, y: 0.21924047, z: 0.29232064}
+  m_LocalScale: {x: 1, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1659270938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: 0}
-  m_SizeDelta: {x: 600, y: 337}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 590, y: 330}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1995424539
 MonoBehaviour:
@@ -1828,7 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8f629a0219b4e409ad4b496417fb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  speed: 10
+  speed: 5
   IsInvincible: 0
   IsUntouchable: 0
   currency: 0
@@ -1839,8 +1830,8 @@ MonoBehaviour:
   vortexLevel: 0
   collideEffect: {fileID: 1065156112753945327, guid: 39c724a35fb4f4a44b7ec1be91800e25, type: 3}
   IceCollideEffect: {fileID: 5597016940700737107, guid: a56ff78ed056aab4fa9fbd2c7cc1bd47, type: 3}
-  knockbackForce: 20
-  knockbackDuration: 0.4
+  knockbackForce: 10
+  knockbackDuration: 0.2
 --- !u!4 &2124465568
 Transform:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class VortexField : MonoBehaviour
 {
@@ -10,6 +11,36 @@ public class VortexField : MonoBehaviour
 
     [Header("Affect")]
     public bool disableEnemyScriptWhilePulling = false; // true yaparsan enemy kovalamayı keser
+
+    public Animator anim;
+
+    void Start()
+    {
+        int cooldown = GameManager.Instance.vortexLevel;
+        StartCoroutine(Dest(cooldown));
+    }
+
+    IEnumerator Dest(int level)
+    {
+        float cooldown = 3f;
+        if(level == 1)
+            cooldown = 3f;
+        else if(level == 2)
+            cooldown =5f;
+        else if(level == 3)
+            cooldown = 7f;
+
+        yield return new WaitForSeconds(cooldown);
+        anim.SetTrigger("Disappear");
+        yield return new WaitForSeconds(0.3f);
+        finish();
+
+    }
+
+    public void finish()
+    {
+        Destroy(gameObject);
+    }
 
     private void FixedUpdate()
     {

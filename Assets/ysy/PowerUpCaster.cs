@@ -110,14 +110,13 @@ public class PowerUpCaster : MonoBehaviour
 
 
         Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-        if(name == "ice") 
-            screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
-         if(name == "vortex") 
-            screenCenter = new Vector3(Screen.width / 2f, (Screen.height / 2f)-300f, 0f);
-
+      
         Ray ray = cam.ScreenPointToRay(screenCenter);
 
         Vector3 spawnPos = cam.transform.position + ray.direction * spawnForward;
+            if(name == "vortex")
+        spawnPos.y += 0.5f; // ✅ garanti yukarıda başlasın
+
 
         GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
 

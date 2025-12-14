@@ -8,21 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8259452188262937702, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7194602523264148516, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
       propertyPath: m_Name
       value: vortex
       objectReference: {fileID: 0}
     - target: {fileID: 7598313495520770581, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -100.474785
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7598313495520770581, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000060225975
+      value: 147.9882
       objectReference: {fileID: 0}
     - target: {fileID: 7598313495520770581, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 271.17514
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7598313495520770581, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
       propertyPath: m_LocalRotation.w

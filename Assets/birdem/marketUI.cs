@@ -8,29 +8,90 @@ public class MarketUI : MonoBehaviour
     public TextMeshProUGUI fishText;
     public TextMeshProUGUI messageText;
 
+    [Header("Button Sprites")]
+    public Sprite buttonPlain;
+    public Sprite buttonLevel1;
+    public Sprite buttonLevel2;
+    public Sprite buttonLevel3;
+    public Sprite buttonLocked; // opsiyon
+
+    [Header("Lock Overlays (child lock images)")]
+    public GameObject overdriveLock;
+    public GameObject frostLock;
+    public GameObject vortexLock;
+    public GameObject lightningLock;
+
+    [Header("Buttons (Image)")]
+    public UnityEngine.UI.Image overdriveBtnImage;
+    public UnityEngine.UI.Image frostBtnImage;
+    public UnityEngine.UI.Image vortexBtnImage;
+    public UnityEngine.UI.Image lightningBtnImage;
+
+    private Sprite GetSpriteForLevel(int level)
+    {
+        switch (level)
+        {
+            case 0: return buttonPlain;
+            case 1: return buttonLevel1;
+            case 2: return buttonLevel2;
+            default: return buttonLevel3; // 3 ve üstü
+        }
+    }
+
+
+    private int MAX_LEVEL = 3;
+
+    [Header("Price Scaling")]
+    [Range(1.1f, 3f)] public float priceMultiplier = 1.6f;
+
+    private string LevelKey(string id)
+    {
+        return $"PU_LEVEL_{id}";
+    }
+
+    private int GetLevel(string id)
+    {
+        return PlayerPrefs.GetInt(LevelKey(id), 0);
+    }
+
+    private void SetLevel(string id, int level)
+    {
+        level = Mathf.Clamp(level, 0, MAX_LEVEL);
+        PlayerPrefs.SetInt(LevelKey(id), level);
+        PlayerPrefs.Save();
+    }
+
+
+    private int GetNextPrice(int basePrice, int currentLevel)
+    {
+        // currentLevel 0 -> Lv1 fiyatı, 1 -> Lv2 fiyatı, 2 -> Lv3 fiyatı
+        float scaled = basePrice * Mathf.Pow(priceMultiplier, currentLevel);
+        return Mathf.CeilToInt(scaled);
+    }
+
     private void Start()
     {
-        GameManager.Instance.SetCurrency(20);
+        GameManager.Instance.SetCurrency(50);
         Refresh();
     }
 
     public void BuyOverdrive()
     {
         int price = GameManager.Instance.OverdrivePrice();
-        TryBuy("Overdrive", price);
+        TryBuyLevelUp("Overdrive", price);
     }
 
     public void BuyFrostCharge()
     {
         int price = GameManager.Instance.FrostChargePrice();
-        TryBuy("Frost Charge", price);
+        TryBuyLevelUp("Frost Charge", price);
     }
 
      public void BuyVortex()
     {
         //int price = GameManager.Instance.FrostChargePrice();
         int price = 10;
-        TryBuy("Vortex", price);
+        TryBuyLevelUp("Vortex", price);
         
     }
 
@@ -38,26 +99,131 @@ public class MarketUI : MonoBehaviour
     {
         //int price = GameManager.Instance.FrostChargePrice();
         int price = 15;
-        TryBuy("Lightning", price);
+        TryBuyLevelUp("Lightning", price);
         
     }
 
-    private void TryBuy(string itemName, int price)
+private void TryBuyLevelUp(string id, int basePrice)
+{
+    int level = GetLevel(id);
+
+    if (level >= MAX_LEVEL)
     {
-        int cur = GameManager.Instance.GetCurrency();
-
-        if (cur < price)
-        {
-            if (messageText != null) messageText.text = "Not enough currency!";
-            Refresh();
-            return;
-        }
-
-        GameManager.Instance.SetCurrency(cur - price);
-
-        if (messageText != null) messageText.text = $"Purchased: {itemName}";
-        Refresh();
+        if (messageText) messageText.text = $"{id} MAX (Lv {MAX_LEVEL})";
+        return;
     }
+
+    int price = GetNextPrice(basePrice, level);
+
+    int cur = GameManager.Instance.GetCurrency();
+    if (cur < price)
+    {
+        if (messageText) messageText.text = $"Need {price} (You have {cur})";
+        return;
+    }
+
+    GameManager.Instance.SetCurrency(cur - price);
+
+    int newLevel = level + 1;
+    SetLevel(id, newLevel);
+
+    if (messageText) messageText.text = $"Purchased {id} -> Lv {newLevel} (-{price})";
+    Refresh();
+}
+
+
+    private int GetPowerUpLevel(string id)
+    {
+        // default 0: hiç alınmamış
+        return PlayerPrefs.GetInt(LevelKey(id), 0);
+    }
+
+    private void SetPowerUpLevel(string id, int level)
+    {
+        level = Mathf.Clamp(level, 0, MAX_LEVEL);
+        PlayerPrefs.SetInt(LevelKey(id), level);
+        PlayerPrefs.Save(); // jam için güvenli
+    }
+
+    private void Refresh()
+    {
+        if (currencyText)
+            currencyText.text = $": {GameManager.Instance.GetCurrency()}";
+
+        UpdateLockOverlay("Overdrive", overdriveLock);
+        UpdateLockOverlay("FrostCharge", frostLock);
+        UpdateLockOverlay("Vortex", vortexLock);
+        UpdateLockOverlay("Lightning", lightningLock);
+
+        UpdateButtonVisual("Overdrive", overdriveBtnImage);
+        UpdateButtonVisual("FrostCharge", frostBtnImage);
+        UpdateButtonVisual("Vortex", vortexBtnImage);
+        UpdateButtonVisual("Lightning", lightningBtnImage);
+
+        Debug.Log($"Overdrive Lv {GetLevel("Overdrive")} | FrostCharge Lv {GetLevel("FrostCharge")} | Vortex Lv {GetLevel("Vortex")} | Lightning Lv {GetLevel("Lightning")}");
+
+    }
+
+private void UpdateLockOverlay(string id, GameObject lockObj)
+{
+    if (lockObj == null) return;
+
+    int level = GetLevel(id);
+
+    // 0 ise kilit açık (görünsün), 1+ ise kilit kapalı (kaybolsun)
+    lockObj.SetActive(level <= 0);
+}
+
+   private void UpdateButtonVisual(string id, UnityEngine.UI.Image img)
+{
+    if (img == null) return;
+
+    int level = GetLevel(id);
+
+    if (level >= MAX_LEVEL)
+    {
+        img.sprite = buttonLevel3;
+        img.preserveAspect = true;
+        return;
+    }
+
+    int basePrice = GetBasePrice(id);
+    int price = GetNextPrice(basePrice, level);
+
+    if (GameManager.Instance.GetCurrency() < price && buttonLocked != null)
+        img.sprite = buttonLocked;
+    else
+        img.sprite = GetSpriteForLevel(level);
+
+    img.preserveAspect = true;
+}
+
+private int GetBasePrice(string id)
+{
+    if (id == "Overdrive") return GameManager.Instance.OverdrivePrice();
+    if (id == "FrostCharge") return GameManager.Instance.FrostChargePrice();
+    if (id == "Vortex") return 10;
+    if (id == "Lightning") return 15;
+    return 999;
+}
+
+
+    private void UpdatePriceText(string id, int basePrice, TextMeshProUGUI txt)
+{
+    if (txt == null) return;
+
+    int level = GetLevel(id);
+
+    if (level >= MAX_LEVEL)
+    {
+        txt.text = "MAX LEVEL";
+        return;
+    }
+
+    int price = GetNextPrice(basePrice, level);
+    txt.text = $"Lv {level}/{MAX_LEVEL}\nCost: {price}";
+}
+
 
     public void SellFish()
     {
@@ -72,19 +238,4 @@ public class MarketUI : MonoBehaviour
     }
 
 
-    private void Refresh()
-    {
-        if (currencyText != null)
-            currencyText.text = GameManager.Instance.GetCurrency().ToString();
-
-        // Fish sistemin GameManager'da yok; şimdilik bilgi amaçlı gösteriyoruz
-        if (fishText != null)
-        {
-            fishText.text =
-                "Fish values:\n" +
-                "Common = 1\n" +
-                "Rare = 2\n" +
-                "Legendary = 5";
-        }
-    }
 }

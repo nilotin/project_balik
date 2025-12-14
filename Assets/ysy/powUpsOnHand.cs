@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public class powUpsOnHand : MonoBehaviour
 {
-
-public int maxSlots = 3;
+    public int maxSlots = 3;
 
     [Header("UI")]
     public List<Image> slotImages;
@@ -14,6 +13,7 @@ public int maxSlots = 3;
     public Sprite iceIcon;
     public Sprite vortexIcon;
     public Sprite lightningIcon;
+    public Sprite overdrive;
 
     private List<string> inventory = new List<string>();
 
@@ -29,25 +29,27 @@ public int maxSlots = 3;
         return true;
     }
 
-    public string PeekFirst()
+    // ✅ Slot index'ten bak (0,1,2)
+    public string PeekAt(int index)
     {
-        if (inventory.Count == 0)
+        if (index < 0 || index >= inventory.Count)
         {
             return null;
         }
 
-        return inventory[0];
+        return inventory[index];
     }
 
-    public string ConsumeFirst()
+    // ✅ Slot index'ten tüket (silince kaydırma otomatik)
+    public string ConsumeAt(int index)
     {
-        if (inventory.Count == 0)
+        if (index < 0 || index >= inventory.Count)
         {
             return null;
         }
 
-        string p = inventory[0];
-        inventory.RemoveAt(0);
+        string p = inventory[index];
+        inventory.RemoveAt(index);
         UpdateUI();
         return p;
     }
@@ -81,11 +83,10 @@ public int maxSlots = 3;
 
             case "lightning":
                 return lightningIcon;
+            case "overdrive":
+                return overdrive;
         }
 
         return null;
     }
-
-
-
 }

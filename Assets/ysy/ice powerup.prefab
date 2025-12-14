@@ -73,7 +73,20 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7401029315344581936, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3324820593163903673}
+    - targetCorrespondingSourceObject: {fileID: 7401029315344581936, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2238854853816830506}
   m_SourcePrefab: {fileID: 100100000, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
+--- !u!135 &2957864207582533193 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 2540330799442617603, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
+  m_PrefabInstance: {fileID: 742355841575711562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6227794816266125125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6638572860128480271, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
+  m_PrefabInstance: {fileID: 742355841575711562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7852268149353461370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7401029315344581936, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
@@ -92,3 +105,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpPickup
   powerUpName: ice
+--- !u!114 &2238854853816830506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7852268149353461370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b35b46a9b3be2d42a3e9196fa247a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::powUpVortex
+  col: {fileID: 2957864207582533193}
+  spriteObject: {fileID: 6227794816266125125}
+  vortexPrefab: {fileID: 7461231177351421982, guid: 1651993f64cf23d46a332b9d6a21a4d5, type: 3}
+  vortexDuration: 3
+  spawnYOffset: 0

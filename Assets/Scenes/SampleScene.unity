@@ -214,6 +214,9 @@ GameObject:
   - component: {fileID: 43518036}
   - component: {fileID: 43518037}
   - component: {fileID: 43518038}
+  - component: {fileID: 43518039}
+  - component: {fileID: 43518040}
+  - component: {fileID: 43518041}
   m_Layer: 0
   m_Name: ship
   m_TagString: ship
@@ -383,8 +386,9 @@ MonoBehaviour:
   - {fileID: 1454490061}
   - {fileID: 1454490060}
   iceIcon: {fileID: 21300000, guid: 3ff338d37964092459e34be70ddccff6, type: 3}
-  vortexIcon: {fileID: 0}
-  lightningIcon: {fileID: 0}
+  vortexIcon: {fileID: 21300000, guid: d423187473648834e93f38551b719625, type: 3}
+  lightningIcon: {fileID: 21300000, guid: 4e5bff86b2f1bef418a2a145fa5e140b, type: 3}
+  overdrive: {fileID: 21300000, guid: 3a98d80fd3f12e34b89f11d63aab10b8, type: 3}
 --- !u!114 &43518038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +402,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
   maxHealth: 3
+--- !u!114 &43518039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43518030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695c6f32ed16937459f1301d404b970d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::powUpSpeed
+--- !u!114 &43518040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43518030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43019953ecfc5f47a49128dafeea082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpCaster
+  cam: {fileID: 0}
+  inventory: {fileID: 43518037}
+  iceBombPrefab: {fileID: 7194602523264148516, guid: c6111d519e09daf4395b73db4182a48d, type: 3}
+  vortexPrefab: {fileID: 1896020213683401470, guid: 517e57c4f3a20694296448072199aad3, type: 3}
+  lightningPrefab: {fileID: 0}
+  shootForce: 12
+  spawnForward: 1.5
+--- !u!114 &43518041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43518030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c020359f90332b947bfcba4690a5258c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::lightningPow
+  enemyTags:
+  - shark
+  - worm
+  - leviathan
+  firstTargetRange: 12
+  jumpRange: 8
+  maxChains: 3
+  hitDelay: 0.07
+  destroyOnHit: 1
+  stunSeconds: 1.5
+  lightning: {fileID: 8283823355432563973, guid: 25e06b9ace905254fb51460164c8481b, type: 3}
+  lightningLinePrefab: {fileID: 3166461372547645368, guid: 9a552f66944cb614b8ef1184066bcc41, type: 3}
+  lineLifeTime: 0.15
 --- !u!1001 &326697333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1761,8 +1821,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   speed: 5
   IsInvincible: 0
+  IsUntouchable: 0
   currency: 0
   ship: {fileID: 43518030}
+  freezeLevel: 0
+  overDriveLevel: 1
+  lightningLevel: 0
+  vortexLevel: 0
+  collideEffect: {fileID: 1065156112753945327, guid: 39c724a35fb4f4a44b7ec1be91800e25, type: 3}
+  IceCollideEffect: {fileID: 5597016940700737107, guid: a56ff78ed056aab4fa9fbd2c7cc1bd47, type: 3}
+  knockbackForce: 10
+  knockbackDuration: 0.2
 --- !u!4 &2124465568
 Transform:
   m_ObjectHideFlags: 0

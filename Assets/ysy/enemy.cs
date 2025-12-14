@@ -17,7 +17,7 @@ public class enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        ship = GameManager.Instance.ship.GetComponent<Transform>();
+      
     }
 
     void Start()
@@ -30,6 +30,8 @@ public class enemy : MonoBehaviour
                 ship = found.transform;
             }
         }
+        
+         ship = GameManager.Instance.ship.GetComponent<Transform>();
     }
 
     void FixedUpdate()
@@ -83,16 +85,37 @@ public class enemy : MonoBehaviour
         {
             ShipHealth shipHealth = other.GetComponent<ShipHealth>();
         
-            if (shipHealth != null)
+            if(GetComponent<state>().isFrozen == false && GameManager.Instance.IsInvincible == false && GameManager.Instance.IsUntouchable == false)
             {
-                // damageAmount'ı düşman tipine göre Inspector'da ayarlayın:
-                // Worm/Shark: 1
-                // Leviathan: 2
-                shipHealth.TakeDamage(damageAmount);
+                
+                shipHealth.TakeDamage(damageAmount);    
+
+                Vector3 knockDir =
+                    transform.position + other.transform.position;
+
+                ShipMovement move = GameManager.Instance.ship.GetComponent<ShipMovement>();
+                if (move != null)
+                {
+                    move.ApplyKnockback(knockDir, GameManager.Instance.knockbackForce, GameManager.Instance.knockbackDuration);
+                }
+
+            }
+                
+            else if(GetComponent<state>().isFrozen)
+            {
+                Instantiate(GameManager.Instance.IceCollideEffect, transform.position,Quaternion.identity);
+                int cur = GameManager.Instance.GetCurrency();
+                GameManager.Instance.SetCurrency(cur+4);
+                Destroy(gameObject); 
+            }
+            else if(GameManager.Instance.IsInvincible)
+            {
+                Instantiate(GameManager.Instance.collideEffect, transform.position,Quaternion.identity);
+                int cur = GameManager.Instance.GetCurrency();
+                GameManager.Instance.SetCurrency(cur+4);
+                Destroy(gameObject); 
             }
         
-            // Düşman hasar verdikten sonra yok edilebilir:
-            Destroy(gameObject); 
         }
     }
 

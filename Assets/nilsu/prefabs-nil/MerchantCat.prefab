@@ -320,8 +320,7 @@ MonoBehaviour:
   shipTag: ship
   lockY: 1
   pressEUI: {fileID: 7448044605457367833}
-  marketCanvas: {fileID: 0}
-  shipMovement: {fileID: 0}
+  marketController: {fileID: 7035050469283847563, guid: 616f64b023d9346bfa2ca1c0185dbe05, type: 3}
 --- !u!114 &-6292275350180919894
 MonoBehaviour:
   m_ObjectHideFlags: 0

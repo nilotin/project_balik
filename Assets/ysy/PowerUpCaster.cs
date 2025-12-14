@@ -129,7 +129,7 @@ public class PowerUpCaster : MonoBehaviour
         }
 
         // Ek offset (vortex’i biraz yukarı koymak vs.)
-        spawnPos.y += spawnYOffset;
+        spawnPos.y = 0;
 
         if (name == "vortex")
         {

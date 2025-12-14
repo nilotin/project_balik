@@ -17,6 +17,7 @@ public class enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+      
     }
 
     void Start()
@@ -29,7 +30,8 @@ public class enemy : MonoBehaviour
                 ship = found.transform;
             }
         }
-        ship = GameManager.Instance.ship.GetComponent<Transform>();
+        
+         ship = GameManager.Instance.ship.GetComponent<Transform>();
     }
 
     void FixedUpdate()
@@ -69,28 +71,6 @@ public class enemy : MonoBehaviour
         else
         {
             transform.position += dir * moveSpeed * Time.fixedDeltaTime;
-        }
-    }
-    
-    // Örnek Düşman Çarpışma Scripti (Enemy.cs)
-
-// Düşmanın tipine göre hasar miktarını belirle
-    public int damageAmount = 1; // Varsayılan: Worm ve Shark için 1
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("ship")) // Geminizin tag'inin "Ship" olduğunu varsayıyorum
-        {
-            ShipHealth shipHealth = other.GetComponent<ShipHealth>();
-        
-            if (shipHealth != null)
-            {
-                // damageAmount'ı düşman tipine göre Inspector'da ayarlayın:
-                // Worm/Shark: 1
-                // Leviathan: 2
-                shipHealth.TakeDamage(damageAmount);
-            }
-        
         }
     }
 

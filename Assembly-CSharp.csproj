@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 ﻿<Project>
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
->>>>>>> bca7714e1b060690a157017ab05df7cbf3216435
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
     <BaseIntermediateOutputPath>Temp\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
@@ -56,6 +51,7 @@
     <Compile Include="Assets\birdem\lightningPow.cs" />
     <Compile Include="Assets\ysy\attack_warning.cs" />
     <Compile Include="Assets\ysy\GameManager.cs" />
+    <Compile Include="Assets\nilsu\scripts-nil\ShipHealth.cs" />
     <Compile Include="Assets\ysy\PowerUpPickup.cs" />
     <Compile Include="Assets\ysy\powUpSpeed.cs" />
     <Compile Include="Assets\ysy\BIllboardOnlyY.cs" />
@@ -72,6 +68,7 @@
     <Compile Include="Assets\ysy\IceBomb.cs" />
     <Compile Include="Assets\ysy\fish.cs" />
     <Compile Include="Assets\birdem\marketUI.cs" />
+    <Compile Include="Assets\nilsu\scripts-nil\HealthUI.cs" />
     <Compile Include="Assets\ysy\icePowerUp.cs" />
     <Compile Include="Assets\ysy\iceEffect.cs" />
   </ItemGroup>

@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviour
     [Header("Economy")]
     [SerializeField] private int currency = 0;
 
-    private int OverdrivePriceCur = 150;
-    private int FrostChargePriceCur = 200;
-    private int LightningPriceCur = 250;
-    private int VortexPriceCur = 250;
+    private int OverdrivePriceCur = 100;
+    private int FrostChargePriceCur = 100;
+    private int LightningPriceCur = 125;
+    private int VortexPriceCur = 125;
 
     [Header("Refs")]
     public GameObject ship;

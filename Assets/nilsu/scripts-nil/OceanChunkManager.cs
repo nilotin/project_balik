@@ -115,6 +115,42 @@ public class OceanChunkManager : MonoBehaviour
         UpdateOceanChunks();
     }
 
+    private bool IsUnlockedByIndex(int index)
+    {
+        if (GameManager.Instance == null) return false;
+
+        switch (index)
+        {
+            case 0: return GameManager.Instance.overDriveLevel > 0;
+            case 1: return GameManager.Instance.freezeLevel > 0;
+            case 2: return GameManager.Instance.lightningLevel > 0;
+            case 3: return GameManager.Instance.vortexLevel > 0;
+            default: return false;
+        }
+    }
+
+    private GameObject PickUnlockedPowerUpByIndex()
+    {
+        if (powerUpPrefabs == null || powerUpPrefabs.Length == 0)
+            return null;
+
+        List<GameObject> unlocked = new List<GameObject>();
+
+        int count = Mathf.Min(powerUpPrefabs.Length, 4); // sadece ilk 4
+        for (int i = 0; i < count; i++)
+        {
+            if (powerUpPrefabs[i] == null) continue;
+            if (IsUnlockedByIndex(i))
+                unlocked.Add(powerUpPrefabs[i]);
+        }
+
+        if (unlocked.Count == 0)
+            return null;
+
+        return unlocked[Random.Range(0, unlocked.Count)];
+    }
+
+
     // =================================================================================
     // OYUN ALANI YÖNETİMİ
     // =================================================================================
@@ -271,15 +307,27 @@ public class OceanChunkManager : MonoBehaviour
 
 
             // Power-Up kontrolü
-            else if (powerUpPrefabs.Length > 0 && Random.value < powerUpChance)
+            else if (Random.value < powerUpChance)
             {
                 Transform point = content.Find(POWERUP_POINT);
                 if (point != null && point.childCount == 0)
                 {
-                    SpawnGenericContentAt(content, POWERUP_POINT, powerUpPrefabs);
-                    continue;
+                    GameObject chosen = PickUnlockedPowerUpByIndex();
+                    if (chosen != null)
+                    {
+                        GameObject obj = Instantiate(chosen, point);
+
+                        obj.transform.localPosition = new Vector3(
+                            Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f)
+                        );
+                        obj.transform.localRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+
+                        continue;
+                    }
+                    // unlocked yoksa: spawnlama
                 }
             }
+
             
             else if (merchantCat.Length > 0 && Random.value < merchantChance)
             {

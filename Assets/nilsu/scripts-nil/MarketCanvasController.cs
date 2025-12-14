@@ -6,6 +6,7 @@ public class MarketCanvasController : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject marketCanvas;
     [SerializeField] private ShipMovement shipMovement;
+    [SerializeField] private MarketUI marketUI;
 
     private bool isOpen;
     private bool playerInRange;
@@ -31,9 +32,11 @@ public class MarketCanvasController : MonoBehaviour
         isOpen = !isOpen;
         marketCanvas.SetActive(isOpen);
 
-        // 🚢 SHIP HAREKET KONTROLÜ
         if (shipMovement != null)
             shipMovement.enabled = !isOpen;
+
+        if (isOpen && marketUI != null)
+            marketUI.SendMessage("Refresh", SendMessageOptions.DontRequireReceiver);
     }
 
     public void SetPlayerInRange(bool value)

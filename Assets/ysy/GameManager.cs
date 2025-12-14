@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +12,10 @@ public class GameManager : MonoBehaviour
     [Header("Economy")]
     [SerializeField] private int currency = 0;
 
-    private int OverdrivePriceCur = 15;
-    private int FrostChargePriceCur = 20;
-    private int LightningPriceCur = 25;
-    private int VortexPriceCur = 25;
+    private int OverdrivePriceCur = 150;
+    private int FrostChargePriceCur = 200;
+    private int LightningPriceCur = 250;
+    private int VortexPriceCur = 250;
 
     [Header("Refs")]
     public GameObject ship;
@@ -169,6 +170,14 @@ public class GameManager : MonoBehaviour
         speed = s;
     }
 
+    void Update()
+    {
+        if (Keyboard.current != null && Keyboard.current.uKey.wasPressedThisFrame)
+        {
+            ResetAllProgress();
+        }
+    }
+
     // =======================
     // UI
     // =======================
@@ -182,4 +191,29 @@ public class GameManager : MonoBehaviour
 
         currencyText.text = currency.ToString();
     }
+
+    public void ResetAllProgress()
+    {
+        // Runtime değerleri sıfırla
+        currency = 0;
+
+        freezeLevel = 0;
+        overDriveLevel = 1;   // başlangıç level’ını korumak istiyorsan 1
+        lightningLevel = 0;
+        vortexLevel = 0;
+
+        // PlayerPrefs temizle (sadece bizim key’ler)
+        PlayerPrefs.DeleteKey("CURRENCY");
+        PlayerPrefs.DeleteKey("OVERDRIVE_LEVEL");
+        PlayerPrefs.DeleteKey("FREEZE_LEVEL");
+        PlayerPrefs.DeleteKey("LIGHTNING_LEVEL");
+        PlayerPrefs.DeleteKey("VORTEX_LEVEL");
+        PlayerPrefs.Save();
+
+        // UI güncelle
+        UpdateCurrencyUI();
+
+        Debug.Log("ALL PROGRESS RESET");
+    }
+
 }

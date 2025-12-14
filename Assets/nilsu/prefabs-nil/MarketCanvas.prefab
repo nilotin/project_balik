@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.83137256}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 7453148756904286749}
   - component: {fileID: 2278644624986370005}
   - component: {fileID: 2445096404174463083}
+  - component: {fileID: 6102440871989374422}
   m_Layer: 5
   m_Name: CoinArea
   m_TagString: Untagged
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -290,6 +291,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6102440871989374422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065554591287244840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95936df36fe8ce641ae623c6eaa7668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  text: {fileID: 5964285619916772558}
 --- !u!1 &4268372173383472145
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,8 +727,8 @@ RectTransform:
   - {fileID: 3559398102526170980}
   - {fileID: 7362439899909943937}
   - {fileID: 7453148756904286749}
-  - {fileID: 5490230544547045563}
   - {fileID: 7837654533187057800}
+  - {fileID: 5490230544547045563}
   m_Father: {fileID: 7291092949890219479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -744,7 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -799,7 +813,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -341, y: 0}
   m_SizeDelta: {x: 897.949, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5491419754944192076
@@ -824,7 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1084,10 +1098,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5490230544547045563}
     m_Modifications:
+    - target: {fileID: 392582638005861380, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d423187473648834e93f38551b719625, type: 3}
     - target: {fileID: 3006707235269180892, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9a4c4f75bfb51c74a95dcd00bf6e3763, type: 3}
+    - target: {fileID: 3441982919608618189, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: coinUp
+      value: 
+      objectReference: {fileID: 6102440871989374422}
+    - target: {fileID: 3441982919608618189, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: abilityType
+      value: vortex
+      objectReference: {fileID: 0}
     - target: {fileID: 4645786353124367615, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1172,6 +1198,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 145.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 145.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000013351
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1190,10 +1232,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5490230544547045563}
     m_Modifications:
+    - target: {fileID: 392582638005861380, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8836b4793fae9e64bb155bbae51342e9, type: 3}
     - target: {fileID: 3006707235269180892, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9a4c4f75bfb51c74a95dcd00bf6e3763, type: 3}
+    - target: {fileID: 3441982919608618189, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: coinUp
+      value: 
+      objectReference: {fileID: 6102440871989374422}
     - target: {fileID: 4645786353124367615, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1278,6 +1328,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 157.961
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 157.961
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000005722
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1296,10 +1362,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5490230544547045563}
     m_Modifications:
+    - target: {fileID: 392582638005861380, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3a98d80fd3f12e34b89f11d63aab10b8, type: 3}
     - target: {fileID: 3006707235269180892, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9a4c4f75bfb51c74a95dcd00bf6e3763, type: 3}
+    - target: {fileID: 3441982919608618189, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: coinUp
+      value: 
+      objectReference: {fileID: 6102440871989374422}
+    - target: {fileID: 3441982919608618189, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: abilityType
+      value: overdrive
+      objectReference: {fileID: 0}
     - target: {fileID: 4645786353124367615, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1402,10 +1480,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5490230544547045563}
     m_Modifications:
+    - target: {fileID: 392582638005861380, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e5bff86b2f1bef418a2a145fa5e140b, type: 3}
     - target: {fileID: 3006707235269180892, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9a4c4f75bfb51c74a95dcd00bf6e3763, type: 3}
+    - target: {fileID: 3441982919608618189, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: coinUp
+      value: 
+      objectReference: {fileID: 6102440871989374422}
+    - target: {fileID: 3441982919608618189, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: abilityType
+      value: lightning
+      objectReference: {fileID: 0}
     - target: {fileID: 4645786353124367615, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1489,6 +1579,22 @@ PrefabInstance:
     - target: {fileID: 5024504343076466813, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
       propertyPath: m_Name
       value: ItemSlot_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 155.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 155.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 149.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133543621848914371, guid: 1129ebeb510cb1d44bcc7492f4d60178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000038146973
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -31,6 +31,10 @@ public class MarketCanvasController : MonoBehaviour
     {
         isOpen = !isOpen;
         marketCanvas.SetActive(isOpen);
+        if(isOpen)
+            Time.timeScale = 0f;
+        else
+            Time.timeScale = 1f;
 
         if (shipMovement != null)
             shipMovement.enabled = !isOpen;

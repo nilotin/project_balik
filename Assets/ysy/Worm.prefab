@@ -12,9 +12,21 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9936af9c7fcbb8446b1d18ca357464e7, type: 3}
+    - target: {fileID: 6463140693981900291, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463140693981900291, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6793530407499020542, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
       propertyPath: m_Name
       value: Worm
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793530407499020542, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7564415457287460812, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7925423572629058565, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9222946272663985955, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
     m_RemovedGameObjects: []
@@ -89,3 +105,4 @@ MonoBehaviour:
   secondSpawnDelay: 1.5
   cooldown: 3
   lockY: 1
+  damageAmount: 1

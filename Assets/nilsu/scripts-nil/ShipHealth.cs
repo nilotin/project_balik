@@ -46,18 +46,18 @@ public class ShipHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Gemi batırıldı! Oyun Bitti.");
-        
-        // Buraya "Game Over" ekranı veya sahneyi yeniden yükleme kodu gelebilir.
-        // Basitçe sahneyi yeniden yüklüyoruz:
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        // Şimdilik sadece objeyi devre dışı bırakalım.
-        // gameObject.SetActive(false); 
-        
-        // Oyunu tamamen durdurmak ve görmek için
-        Time.timeScale = 0f;
+        GameOverUI gameOverUI = FindFirstObjectByType<GameOverUI>();
+        if (gameOverUI != null)
+        {
+            gameOverUI.ShowGameOver();
+        }
+        else
+        {
+            Debug.LogError("GameOverUI sahnede bulunamadı!");
+        }
     }
-    
+
     // Test veya Power-up'lar için can yenileme
     public void Heal(int amount)
     {

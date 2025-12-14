@@ -2091,6 +2091,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship
       objectReference: {fileID: 0}
+    - target: {fileID: 4135141170477394295, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: jumpRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135141170477394295, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: maxChains
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6169659802685478692, guid: 978e754ca99984123a568c33acbaa525, type: 3}
       propertyPath: vortexPrefab
       value: 

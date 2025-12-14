@@ -114,6 +114,13 @@ public class GameManager : MonoBehaviour
 
     void UpdateCurrencyUI()
     {
+        if (currencyText == null)
+        {
+            currencyText = GameObject.Find("CurrencyText")?.GetComponent<TMP_Text>();
+            // CurrencyText objenin adı farklıysa burayı değiştir
+            if (currencyText == null) return;
+        }
+
         currencyText.text = currency.ToString();
     }
 

@@ -13,6 +13,8 @@ public class PowerUpPickup : MonoBehaviour
 
 
         powUpsOnHand inv = other.GetComponent<powUpsOnHand>();
+        SoundManager.Instance?.PlayPowerUpPickup();
+
 
         if (inv == null)
         {

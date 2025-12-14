@@ -53,7 +53,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
+        currency = PlayerPrefs.GetInt(CURRENCY_KEY, currency); 
+        SoundManager.Instance?.PlayAmbience();
+        
         Instance = this;
         //DontDestroyOnLoad(gameObject);
 

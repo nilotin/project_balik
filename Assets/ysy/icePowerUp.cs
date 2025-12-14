@@ -97,6 +97,7 @@ public class icePowerUp : MonoBehaviour
         }
 
         GameObject target = coll.gameObject;
+        SoundManager.Instance?.PlayPowerUpPickup();
 
         // Sadece shark/worm ile ilgilen
         bool isShark = coll.CompareTag("shark");

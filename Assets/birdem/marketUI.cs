@@ -8,6 +8,37 @@ public class MarketUI : MonoBehaviour
     public TextMeshProUGUI fishText;
     public TextMeshProUGUI messageText;
 
+    [Header("Button Sprites")]
+    public Sprite buttonPlain;
+    public Sprite buttonLevel1;
+    public Sprite buttonLevel2;
+    public Sprite buttonLevel3;
+    public Sprite buttonLocked; // opsiyon
+
+    [Header("Lock Overlays (child lock images)")]
+    public GameObject overdriveLock;
+    public GameObject frostLock;
+    public GameObject vortexLock;
+    public GameObject lightningLock;
+
+    [Header("Buttons (Image)")]
+    public UnityEngine.UI.Image overdriveBtnImage;
+    public UnityEngine.UI.Image frostBtnImage;
+    public UnityEngine.UI.Image vortexBtnImage;
+    public UnityEngine.UI.Image lightningBtnImage;
+
+    private Sprite GetSpriteForLevel(int level)
+    {
+        switch (level)
+        {
+            case 0: return buttonPlain;
+            case 1: return buttonLevel1;
+            case 2: return buttonLevel2;
+            default: return buttonLevel3; // 3 ve üstü
+        }
+    }
+
+
     private int MAX_LEVEL = 3;
 
     [Header("Price Scaling")]
@@ -40,7 +71,7 @@ public class MarketUI : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.SetCurrency(20);
+        GameManager.Instance.SetCurrency(50);
         Refresh();
     }
 
@@ -119,10 +150,63 @@ private void TryBuyLevelUp(string id, int basePrice)
         if (currencyText)
             currencyText.text = $": {GameManager.Instance.GetCurrency()}";
 
+        UpdateLockOverlay("Overdrive", overdriveLock);
+        UpdateLockOverlay("FrostCharge", frostLock);
+        UpdateLockOverlay("Vortex", vortexLock);
+        UpdateLockOverlay("Lightning", lightningLock);
+
+        UpdateButtonVisual("Overdrive", overdriveBtnImage);
+        UpdateButtonVisual("FrostCharge", frostBtnImage);
+        UpdateButtonVisual("Vortex", vortexBtnImage);
+        UpdateButtonVisual("Lightning", lightningBtnImage);
 
         Debug.Log($"Overdrive Lv {GetLevel("Overdrive")} | FrostCharge Lv {GetLevel("FrostCharge")} | Vortex Lv {GetLevel("Vortex")} | Lightning Lv {GetLevel("Lightning")}");
 
     }
+
+private void UpdateLockOverlay(string id, GameObject lockObj)
+{
+    if (lockObj == null) return;
+
+    int level = GetLevel(id);
+
+    // 0 ise kilit açık (görünsün), 1+ ise kilit kapalı (kaybolsun)
+    lockObj.SetActive(level <= 0);
+}
+
+   private void UpdateButtonVisual(string id, UnityEngine.UI.Image img)
+{
+    if (img == null) return;
+
+    int level = GetLevel(id);
+
+    if (level >= MAX_LEVEL)
+    {
+        img.sprite = buttonLevel3;
+        img.preserveAspect = true;
+        return;
+    }
+
+    int basePrice = GetBasePrice(id);
+    int price = GetNextPrice(basePrice, level);
+
+    if (GameManager.Instance.GetCurrency() < price && buttonLocked != null)
+        img.sprite = buttonLocked;
+    else
+        img.sprite = GetSpriteForLevel(level);
+
+    img.preserveAspect = true;
+}
+
+private int GetBasePrice(string id)
+{
+    if (id == "Overdrive") return GameManager.Instance.OverdrivePrice();
+    if (id == "FrostCharge") return GameManager.Instance.FrostChargePrice();
+    if (id == "Vortex") return 10;
+    if (id == "Lightning") return 15;
+    return 999;
+}
+
 
     private void UpdatePriceText(string id, int basePrice, TextMeshProUGUI txt)
 {

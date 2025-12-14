@@ -106,6 +106,8 @@ public class icePowerUp : MonoBehaviour
         {
             return;
         }
+        else    
+            Debug.Log("collided");
 
         // Aynı target'ı iki kere ekleme
         if (!frozenTargets.Contains(target))

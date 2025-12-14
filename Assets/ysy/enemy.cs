@@ -17,7 +17,6 @@ public class enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        ship = GameManager.Instance.ship.GetComponent<Transform>();
     }
 
     void Start()
@@ -30,6 +29,7 @@ public class enemy : MonoBehaviour
                 ship = found.transform;
             }
         }
+        ship = GameManager.Instance.ship.GetComponent<Transform>();
     }
 
     void FixedUpdate()

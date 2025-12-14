@@ -11,7 +11,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void Start()
     {
-        // Güvenlik: oyun asla donuk baþlamasýn
+        // Gï¿½venlik: oyun asla donuk baï¿½lamasï¿½n
         Time.timeScale = 1f;
 
         if (pauseMenu != null)
@@ -22,7 +22,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void Update()
     {
-        // P tuþu ile pause toggle
+        // P tuï¿½u ile pause toggle
         if (Keyboard.current != null && Keyboard.current.pKey.wasPressedThisFrame)
         {
             if (isPaused)
@@ -59,6 +59,7 @@ public class PauseMenuManager : MonoBehaviour
     // UI BUTTON
     public void GoToMainMenu()
     {
+        Debug.Log("pressed");
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }

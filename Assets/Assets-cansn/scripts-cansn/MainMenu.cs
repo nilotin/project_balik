@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Scene yönetimi için gerekli
+using UnityEngine.SceneManagement; // Scene yï¿½netimi iï¿½in gerekli
 
 public class MainMenu : MonoBehaviour
 {
-    // Play butonuna týklandýðýnda çaðrýlacak metod
+    // Play butonuna tï¿½klandï¿½ï¿½ï¿½nda ï¿½aï¿½rï¿½lacak metod
     public void PlayGame()
     {
         Debug.Log("PLAY button clicked");
 
-        // Oyun sahnesine geçiþ
-        SceneManager.LoadScene("PauseMenu"); // Sahne ismi yaz buraya gang
+        // Oyun sahnesine geï¿½iï¿½
+        SceneManager.LoadScene("SampleScene"); // Sahne ismi yaz buraya gang
     }
 }

@@ -91,8 +91,6 @@ public class enemy : MonoBehaviour
                 shipHealth.TakeDamage(damageAmount);
             }
         
-            // Düşman hasar verdikten sonra yok edilebilir:
-            Destroy(gameObject); 
         }
     }
 

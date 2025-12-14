@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3285267722103107734}
-  - component: {fileID: 180413983326398764}
   m_Layer: 0
   m_Name: iceOnSurface
   m_TagString: Untagged
@@ -33,19 +32,6 @@ Transform:
   - {fileID: 4230850881710024057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &180413983326398764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3910812050488793076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9a4107c6342ff446ac523f451814bab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  anim: {fileID: 2707066647760018586}
 --- !u!1 &6141097097614518075
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +44,8 @@ GameObject:
   - component: {fileID: 7251813706377067188}
   - component: {fileID: 2707066647760018586}
   - component: {fileID: 3283128131708352212}
+  - component: {fileID: 6768264924043121777}
+  - component: {fileID: 8641857534471782944}
   m_Layer: 0
   m_Name: iceOnSurface
   m_TagString: Untagged
@@ -182,3 +170,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.2404547, y: 3.6400008, z: 0.49330327}
   m_Center: {x: 0, y: 3.0768917e-16, z: -0.14665167}
+--- !u!114 &6768264924043121777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141097097614518075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a4107c6342ff446ac523f451814bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::icePowerUp
+  anim: {fileID: 2707066647760018586}
+  iceObj: {fileID: 0}
+--- !u!54 &8641857534471782944
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141097097614518075}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

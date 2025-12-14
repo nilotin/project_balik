@@ -73,7 +73,6 @@ public class enemy : MonoBehaviour
             transform.position += dir * moveSpeed * Time.fixedDeltaTime;
         }
     }
-<<<<<<< HEAD
     
     // Örnek Düşman Çarpışma Scripti (Enemy.cs)
 
@@ -119,8 +118,6 @@ public class enemy : MonoBehaviour
         
         }
     }
-=======
->>>>>>> bfc9c33c8fb4c59969c68a86cd26ec8be9fd5acc
 
     void Stop()
     {

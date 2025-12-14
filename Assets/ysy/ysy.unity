@@ -449,6 +449,8 @@ MonoBehaviour:
   destroyOnHit: 1
   stunSeconds: 1.5
   lightning: {fileID: 8283823355432563973, guid: 25e06b9ace905254fb51460164c8481b, type: 3}
+  lightningLinePrefab: {fileID: 3166461372547645368, guid: 9a552f66944cb614b8ef1184066bcc41, type: 3}
+  lineLifeTime: 0.15
 --- !u!1 &625099482
 GameObject:
   m_ObjectHideFlags: 0

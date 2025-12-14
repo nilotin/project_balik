@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
     public bool IsUntouchable = false;
     [SerializeField]private int currency = 0;
     private int OverdrivePriceCur = 15;
-    private int FrostChargePriceCur = 15;
+    private int FrostChargePriceCur = 20;
+    private int LightningPriceCur = 25;
+    private int VortexPriceCur = 25;
+
     public GameObject ship;
 
     public int freezeLevel = 0;
@@ -75,4 +78,14 @@ public class GameManager : MonoBehaviour
     {
         return OverdrivePriceCur;
     }  
+
+    public int LightningPrice()
+    {
+        return LightningPriceCur;   
+    }
+
+    public int VortexPrice()
+    {
+        return VortexPriceCur;
+    }
 }

@@ -1,49 +1,49 @@
-Unity Editor version:    6000.3.1f1 (37142da19a94)
-Branch:                  6000.3/respin/6000.3.1f1-f56f53296c2c
-Build type:              Release
-Batch mode:              YES
-macOS version:           Version 26.1 (Build 25B78)
-Darwin version:          25.1.0
-Architecture:            arm64
-Running under Rosetta:   NO
-Available memory:        18432 MB
-Date:                    2025-12-14T07:12:29Z
 [Licensing::Module] Trying to connect to existing licensing client channel...
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-nilsudemirag" at "2025-12-14T07:12:29.88465Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-birde" at "2025-12-14T10:46:12.6594723Z"
+Built from '6000.3/respin/6000.3.1f1-f56f53296c2c' branch; Version is '6000.3.1f1 (37142da19a94) revision 3609645'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) 64bit Professional' Language: 'en' Physical Memory: 32471 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+Date: 2025-12-14T10:46:12Z
 
 COMMAND LINE ARGUMENTS:
-/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/MacOS/Unity
+C:\Program Files\Unity\Hub\Editor\6000.3.1f1-x86_64\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-/Users/nilsudemirag/Desktop/project_balik
+C:/Users/birde/jam/project_balik
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49602
+56147
 -licensingIpc
-LicenseClient-nilsudemirag
+LicenseClient-birde
 -job-worker-count
-5
+13
 -background-job-worker-count
 8
 -gc-helper-count
 1
--name AssetImport
-Successfully changed project path to: /Users/nilsudemirag/Desktop/project_balik
-/Users/nilsudemirag/Desktop/project_balik
+-name
+AssetImport
+Successfully changed project path to: C:/Users/birde/jam/project_balik
+C:/Users/birde/jam/project_balik
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
     "memorysetup-allocator-temp-initial-block-size-main=262144"
     "memorysetup-allocator-temp-initial-block-size-worker=262144"
     "memorysetup-temp-allocator-size-background-worker=32768"
     "memorysetup-temp-allocator-size-job-worker=262144"
     "memorysetup-temp-allocator-size-preload-manager=33554432"
-    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
-    "memorysetup-temp-allocator-size-audio-worker=65536"
-    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
     "memorysetup-bucket-allocator-block-size=33554432"
@@ -64,19 +64,14 @@ Successfully changed project path to: /Users/nilsudemirag/Desktop/project_balik
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
-    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
-    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
-    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
-    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
-    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
-    "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [8688640128]  Target information:
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [8200]  Target information:
 
-Player connection [8688640128]  * "[IP] 192.168.1.105 [Port] 0 [Flags] 2 [Guid] 1934390511 [EditorId] 1934390511 [Version] 1048832 [Id] OSXEditor(0,nils-mac-pro.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+Player connection [8200]  * "[IP] 192.168.1.177 [Port] 0 [Flags] 2 [Guid] 1485482943 [EditorId] 1485482943 [Version] 1048832 [Id] WindowsEditor(7,Birdem) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [8688640128] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [8688640128] Host joined alternative multi-casting on [225.0.0.222:34997]...
-JobSystem: Creating JobQueue using job-worker-count value 5
+Player connection [8200] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8200] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 13
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -87,533 +82,239 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.07 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 8.97 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.3.1f1 (37142da19a94)
-[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path /Users/nilsudemirag/Desktop/project_balik/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.3.1f1-x86_64/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/birde/jam/project_balik/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
- preferred device: Apple M3 Pro (high power)
-Metal devices available: 1
-0: Apple M3 Pro (high power)
-Using device Apple M3 Pro (high power)
-Initializing Metal device caps: Apple M3 Pro
-Mac GPU Family: 2
-Apple GPU Family: 9
-MSL Version: 3.0
-Has Float MSAA: 1
-Has Float Filtering: 1
-ReadWrite Texture Tier: 2
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Laptop GPU (ID=0x2820)
+    Vendor:   NVIDIA
+    VRAM:     7948 MB
+    Driver:   32.0.15.8115
 Initialize mono
-Mono path[0] = '/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/Managed'
-Mono path[1] = '/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/lib/mono/unityjit-macos'
-Mono config path = '/Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Resources/Scripting/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56663
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.3.1f1-x86_64/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.3.1f1-x86_64/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.3.1f1-x86_64/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56192
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: /Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000319 seconds.
-- Loaded All Assemblies, in  0.220 seconds
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.3.1f1-x86_64/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006212 seconds.
+- Loaded All Assemblies, in  1.637 seconds
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              2825a658d3b4434a859fda58c92487ec
-  Correlation Id:          9f61ea2b16ecd103e98d3bb50f4b13ff
-  External correlation Id: 2797187770590052232
-  Machine Id:              qWf8ZNC87FBgtaoXx3Zvx1H80rc=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-nilsudemirag" (connect: 0.00s, validation: 0.00s, handshake: 0.71s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-nilsudemirag-notifications" at "2025-12-14T07:12:30.59174Z"
-[Licensing::Module] Licensing Background thread has ended after 0.71s
-Native extension for OSXStandalone target not found
+  Session Id:              cefaa74dfd5f46a2a7818242e409fb94
+  Correlation Id:          44f1200d9540b52d819860c29a81070d
+  External correlation Id: 6780241980376573661
+  Machine Id:              1x8HmoRm9pgnsdHTo4rEyYthrY4=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-birde" (connect: 0.00s, validation: 0.01s, handshake: 5.06s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-birde-notifications" at "2025-12-14T10:46:17.7238736Z"
+[Licensing::Module] Licensing Background thread has ended after 5.07s
+Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.256 seconds
-Domain Reload Profiling: 476ms
-	BeginReloadAssembly (63ms)
+- Finished resetting the current domain, in  1.681 seconds
+Domain Reload Profiling: 3308ms
+	BeginReloadAssembly (537ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (0ms)
-	RebuildCommonClasses (22ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (23ms)
-	LoadAllAssembliesAndSetupDomain (102ms)
-		LoadAssemblies (63ms)
+		CreateAndSetChildDomain (3ms)
+	RebuildCommonClasses (178ms)
+	RebuildNativeTypeToScriptingClass (58ms)
+	initialDomainReloadingComplete (177ms)
+	LoadAllAssembliesAndSetupDomain (675ms)
+		LoadAssemblies (525ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (101ms)
-			TypeCache.Refresh (100ms)
-				TypeCache.ScanAssembly (89ms)
-			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (0ms)
-	FinalizeReload (257ms)
+		AnalyzeDomain (663ms)
+			TypeCache.Refresh (656ms)
+				TypeCache.ScanAssembly (600ms)
+			BuildScriptInfoCaches (1ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (1682ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (226ms)
+		SetupLoadedEditorAssemblies (1486ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (25ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (56ms)
-			ProcessInitializeOnLoadAttributes (88ms)
-			ProcessInitializeOnLoadMethodAttributes (52ms)
+			InitializePlatformSupportModulesInManaged (187ms)
+			SetLoadedEditorAssemblies (16ms)
+			BeforeProcessingInitializeOnLoad (416ms)
+			ProcessInitializeOnLoadAttributes (613ms)
+			ProcessInitializeOnLoadMethodAttributes (254ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (0ms)
-[CoreBusinessMetrics] Unexpected thread when updating session info.
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
-  Id: 18968247060759-nilotino-UnityProStuXXXX
-  Product: Unity Student
+  Id: 18968226408125-UnityPersXXXX
+  Product: Unity Personal
   Type: Assigned
-  Expiration: 2026-02-19T21:09:41Z
-- Loaded All Assemblies, in  0.401 seconds
-Refreshing native plugins compatible for Editor in 0.21 ms, found 1 plugins.
-Native extension for OSXStandalone target not found
+  Expiration: Unlimited
+- Loaded All Assemblies, in  2.164 seconds
+Refreshing native plugins compatible for Editor in 1.57 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.441 seconds
-Domain Reload Profiling: 842ms
-	BeginReloadAssembly (80ms)
+- Finished resetting the current domain, in  2.465 seconds
+Domain Reload Profiling: 4617ms
+	BeginReloadAssembly (537ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
+		DisableScriptedObjects (17ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (15ms)
-	RebuildCommonClasses (23ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (269ms)
-		LoadAssemblies (170ms)
+		CreateAndSetChildDomain (89ms)
+	RebuildCommonClasses (98ms)
+	RebuildNativeTypeToScriptingClass (34ms)
+	initialDomainReloadingComplete (107ms)
+	LoadAllAssembliesAndSetupDomain (1375ms)
+		LoadAssemblies (1087ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (139ms)
-			TypeCache.Refresh (107ms)
-				TypeCache.ScanAssembly (95ms)
-			BuildScriptInfoCaches (22ms)
-			ResolveRequiredComponents (6ms)
-	FinalizeReload (441ms)
+		AnalyzeDomain (589ms)
+			TypeCache.Refresh (432ms)
+				TypeCache.ScanAssembly (395ms)
+			BuildScriptInfoCaches (110ms)
+			ResolveRequiredComponents (33ms)
+	FinalizeReload (2466ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (325ms)
+		SetupLoadedEditorAssemblies (1923ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1ms)
-			SetLoadedEditorAssemblies (2ms)
-			BeforeProcessingInitializeOnLoad (87ms)
-			ProcessInitializeOnLoadAttributes (199ms)
-			ProcessInitializeOnLoadMethodAttributes (35ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (14ms)
+			BeforeProcessingInitializeOnLoad (553ms)
+			ProcessInitializeOnLoadAttributes (1123ms)
+			ProcessInitializeOnLoadMethodAttributes (214ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (2ms)
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-Launching external process: /Applications/Unity/Hub/Editor/6000.3.1f1/Unity.app/Contents/Helpers/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.20 ms, found 1 plugins.
+		AwakeInstancesAfterBackupRestoration (22ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 3.06 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6263 unused Assets / (3.7 MB). Loaded Objects now: 7074.
-Memory consumption went from 143.6 MB to 139.9 MB.
-Total: 6.709958 ms (FindLiveObjects: 0.605625 ms CreateObjectMapping: 0.130083 ms MarkObjects: 4.645042 ms  DeleteObjects: 1.329000 ms)
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6262 unused Assets / (4.2 MB). Loaded Objects now: 7075.
+Memory consumption went from 150.2 MB to 145.9 MB.
+Total: 31.924800 ms (FindLiveObjects: 1.790100 ms CreateObjectMapping: 0.902800 ms MarkObjects: 21.915000 ms  DeleteObjects: 7.312100 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 966.588700 seconds.
-  path: Assets/ysy/vortexObj.prefab
-  artifactKey: Guid(6d6bcdd0babfe85499995e1e68724951) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/vortexObj.prefab using Guid(6d6bcdd0babfe85499995e1e68724951) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '49fb59cb2fa7d616ec1ab36c71e39c19') in 0.046862542 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+  Time since last request: 237931.836600 seconds.
+  path: Assets/ysy/vortexDisappear-Sheet.png
+  artifactKey: Guid(7caef6c0b0b1f7a43a5f3689122dfe9e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/ysy/vortexDisappear-Sheet.png using Guid(7caef6c0b0b1f7a43a5f3689122dfe9e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '57055ec017a0843f50ccdf71f9fa9e68') in 0.5003695 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/ysy/GameManager.cs
-  artifactKey: Guid(3a8f629a0219b4e409ad4b496417fb02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/GameManager.cs using Guid(3a8f629a0219b4e409ad4b496417fb02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f71cfb250635c6f50b5063b6e05a61d7') in 0.002016416 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/birdem/VortexPref..prefab
-  artifactKey: Guid(1651993f64cf23d46a332b9d6a21a4d5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/birdem/VortexPref..prefab using Guid(1651993f64cf23d46a332b9d6a21a4d5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6ebd278be486e2b899f9b307edcbdb50') in 0.005660959 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/ysy/icePU/CollideEffect 1.controller
-  artifactKey: Guid(e97a4f2f58dd8894bb9efe45b006df57) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/icePU/CollideEffect 1.controller using Guid(e97a4f2f58dd8894bb9efe45b006df57) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ad86e86e6b24a083f70f12abdd66d1e5') in 0.002428708 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 4
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/ysy/ysy.unity
-  artifactKey: Guid(e8cd7a147f1799345b6ee550298f04ad) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/ysy.unity using Guid(e8cd7a147f1799345b6ee550298f04ad) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0c95be3111992ff6d340d6d82325ef9b') in 0.002421458 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000062 seconds.
+  Time since last request: 0.000076 seconds.
   path: Assets/ysy/worm_enemy.cs
   artifactKey: Guid(1d0ba8d1181f6f443944542363540dac) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/worm_enemy.cs using Guid(1d0ba8d1181f6f443944542363540dac) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c2ebbc5315446975146aab0fc536a52f') in 0.001303 seconds
+Start importing Assets/ysy/worm_enemy.cs using Guid(1d0ba8d1181f6f443944542363540dac) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd01caec0022a956eeefaa2d26bca3de0') in 0.0149828 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/ysy/shark.prefab
-  artifactKey: Guid(9c05f22d837d12d4c98fd98cf22f9adf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/shark.prefab using Guid(9c05f22d837d12d4c98fd98cf22f9adf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '739263ec14331d22fdee3e2800e6cd93') in 0.009264584 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 24
+  Time since last request: 0.000076 seconds.
+  path: Assets/nilsu/assets-nil/materials-nil/SeaMetarial.mat
+  artifactKey: Guid(bb6dc18bc18954fe99de5b56184a8195) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/nilsu/assets-nil/materials-nil/SeaMetarial.mat using Guid(bb6dc18bc18954fe99de5b56184a8195) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '9b0ebcce8acc996e6a24b0fe773f2774') in 0.1102548 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/birdem/marketUI.cs
-  artifactKey: Guid(393ea67b21d515d47bf00bfa94e17b83) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/birdem/marketUI.cs using Guid(393ea67b21d515d47bf00bfa94e17b83) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd19763dd1e8a13517c6a527eab1211bc') in 0.001290667 seconds
+  Time since last request: 0.000077 seconds.
+  path: Assets/ysy/icePU/iceOnSurface.prefab
+  artifactKey: Guid(39a109e44ff17724cb023be8f25e3500) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/ysy/icePU/iceOnSurface.prefab using Guid(39a109e44ff17724cb023be8f25e3500) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5e1ce54d580540903c585b9850c55d31') in 0.0475834 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000102 seconds.
+  path: Assets/nilsu/scripts-nil/MarketCanvasController.cs
+  artifactKey: Guid(d0f74a9ce8b22474bad5e8908495824b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/nilsu/scripts-nil/MarketCanvasController.cs using Guid(d0f74a9ce8b22474bad5e8908495824b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '38bd29902e5e677a3a864c48b318e9c2') in 0.0099465 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/ysy/lightningPowUp-Sheet.png
-  artifactKey: Guid(6d29f630d1566be4490b02111770507c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/lightningPowUp-Sheet.png using Guid(6d29f630d1566be4490b02111770507c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '61869f042a0360d34bb93a704ac2d680') in 0.025063209 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/ysy/icePU/icingEffect-Sheet.png
-  artifactKey: Guid(550441d893a349c428d0832e0efb4e01) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/icePU/icingEffect-Sheet.png using Guid(550441d893a349c428d0832e0efb4e01) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a4ecbafc581ff6aeaf262cc90f6d215a') in 0.006944292 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000041 seconds.
-  path: Assets/ysy/icePU/collideEffect.prefab
-  artifactKey: Guid(39c724a35fb4f4a44b7ec1be91800e25) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/icePU/collideEffect.prefab using Guid(39c724a35fb4f4a44b7ec1be91800e25) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8d1a8af025418408f8cb3e80cc5c947c') in 0.011256459 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+  path: Assets/nilsu/prefabs-nil/seatiletemp.prefab
+  artifactKey: Guid(41a98ab640be140f9bc66cb297922574) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/nilsu/prefabs-nil/seatiletemp.prefab using Guid(41a98ab640be140f9bc66cb297922574) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '6d0eedb35a5f6c9f110320a54786ac3c') in 0.0564851 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 18
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/ysy/powUpsOnHand.cs
-  artifactKey: Guid(4cba8a5e830d80d45916799bea7dff4d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/powUpsOnHand.cs using Guid(4cba8a5e830d80d45916799bea7dff4d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c84b0105960a8b895501af30bf9fed32') in 0.001392167 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/ysy/icePU/collideEffect-Sheet.png
-  artifactKey: Guid(fe697a175c49ccc4990bde2113f18e93) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/icePU/collideEffect-Sheet.png using Guid(fe697a175c49ccc4990bde2113f18e93) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3776421eeb3662529d5733feb610b17d') in 0.0064975 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/ysy/UI
-  artifactKey: Guid(a0d5eae3f53ae63429c086d743a7e40b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/UI using Guid(a0d5eae3f53ae63429c086d743a7e40b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'aa93bd6e1dc3b95ad4fc76cab99ba232') in 0.001294708 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000069 seconds.
-  path: Assets/nilsu/scripts-nil/ShipMovement.cs
-  artifactKey: Guid(bdd104f2200e740ce89312b89b2b1bfa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/nilsu/scripts-nil/ShipMovement.cs using Guid(bdd104f2200e740ce89312b89b2b1bfa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f6d5a688624e7e674ccc6c7ceea71d82') in 0.001493459 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/ysy/UI/buttonLevel2.png
-  artifactKey: Guid(e26db3a11db8a1a45bf4f9d5c0a69827) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/UI/buttonLevel2.png using Guid(e26db3a11db8a1a45bf4f9d5c0a69827) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'b41bf9106393a7552c06ddff31cf9145') in 0.003613291 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/birdem/powUpVortex.cs
-  artifactKey: Guid(8b35b46a9b3be2d42a3e9196fa247a62) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/birdem/powUpVortex.cs using Guid(8b35b46a9b3be2d42a3e9196fa247a62) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4e2433d5deb431618ee4032202a771ef') in 0.001307333 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/ysy/Worm.prefab
-  artifactKey: Guid(7fd0770249028fd4bb441c84f1961738) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/Worm.prefab using Guid(7fd0770249028fd4bb441c84f1961738) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3b94e695e34163a5635f106a8f7c3140') in 0.004484375 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 56
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/ysy/overdrive_symbol-Sheet.png
-  artifactKey: Guid(3a98d80fd3f12e34b89f11d63aab10b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/overdrive_symbol-Sheet.png using Guid(3a98d80fd3f12e34b89f11d63aab10b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c0288dc957635417e02ecd43476fa7b5') in 0.00345775 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/ysy/vortexDisap.anim
-  artifactKey: Guid(30415b0f29fe6bf4d96f8c2c49249fd3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/vortexDisap.anim using Guid(30415b0f29fe6bf4d96f8c2c49249fd3) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4611f913b0c0e5ba7a1ce6d12b48c428') in 0.006179792 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/ysy/icePU/defrost-Sheet.png
-  artifactKey: Guid(e5be0e3c1183ced48af365efa08aed90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/ysy/icePU/defrost-Sheet.png using Guid(e5be0e3c1183ced48af365efa08aed90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a17f39f0ff5e8a695578b89666262e13') in 0.005218042 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+  Time since last request: 0.000044 seconds.
+  path: Assets/ysy/vortexObj.controller
+  artifactKey: Guid(224bf8d2bf1b5f744b412070aa781f72) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/ysy/vortexObj.controller using Guid(224bf8d2bf1b5f744b412070aa781f72) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '66b09958b215c5464304a055f0bdbfff') in 0.0141396 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 4
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x170faf000 may have been prematurely finalized
-- Loaded All Assemblies, in  0.338 seconds
-Refreshing native plugins compatible for Editor in 0.21 ms, found 1 plugins.
-Native extension for OSXStandalone target not found
+- Loaded All Assemblies, in  1.852 seconds
+Refreshing native plugins compatible for Editor in 1.59 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.421 seconds
-Domain Reload Profiling: 761ms
-	BeginReloadAssembly (94ms)
+- Finished resetting the current domain, in  2.259 seconds
+Domain Reload Profiling: 4108ms
+	BeginReloadAssembly (505ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
+		DisableScriptedObjects (12ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (25ms)
-	RebuildCommonClasses (22ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (11ms)
-	LoadAllAssembliesAndSetupDomain (203ms)
-		LoadAssemblies (144ms)
+		CreateAndSetChildDomain (99ms)
+	RebuildCommonClasses (91ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (68ms)
+	LoadAllAssembliesAndSetupDomain (1152ms)
+		LoadAssemblies (958ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (91ms)
-			TypeCache.Refresh (5ms)
+		AnalyzeDomain (455ms)
+			TypeCache.Refresh (18ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (78ms)
-			ResolveRequiredComponents (6ms)
-	FinalizeReload (422ms)
+			BuildScriptInfoCaches (398ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (2261ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (332ms)
+		SetupLoadedEditorAssemblies (1817ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (94ms)
-			ProcessInitializeOnLoadAttributes (195ms)
-			ProcessInitializeOnLoadMethodAttributes (39ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (19ms)
+			BeforeProcessingInitializeOnLoad (566ms)
+			ProcessInitializeOnLoadAttributes (979ms)
+			ProcessInitializeOnLoadMethodAttributes (232ms)
+			AfterProcessingInitializeOnLoad (16ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (7ms)
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-Refreshing native plugins compatible for Editor in 0.30 ms, found 1 plugins.
+		AwakeInstancesAfterBackupRestoration (52ms)
+Refreshing native plugins compatible for Editor in 3.57 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6259 unused Assets / (3.0 MB). Loaded Objects now: 7094.
-Memory consumption went from 158.3 MB to 155.3 MB.
-Total: 7.085333 ms (FindLiveObjects: 0.371750 ms CreateObjectMapping: 0.185542 ms MarkObjects: 5.252375 ms  DeleteObjects: 1.275333 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 126.069305 seconds.
-  path: Assets/ysy/ice powerup.prefab
-  artifactKey: Guid(63799e34157787c479a8b4dda935bafa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/ice powerup.prefab using Guid(63799e34157787c479a8b4dda935bafa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9d097c10e62d01f26e7d2d8a5bb9ba78') in 0.245178084 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 49
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.944596 seconds.
-  path: Assets/ysy/lightningPowUp-Sheet.png
-  artifactKey: Guid(6d29f630d1566be4490b02111770507c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/lightningPowUp-Sheet.png using Guid(6d29f630d1566be4490b02111770507c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5c08bdba6296547a723a6c4c95868590') in 0.0161225 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.246335 seconds.
-  path: Assets/ysy/ligthningStrike.prefab
-  artifactKey: Guid(25e06b9ace905254fb51460164c8481b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/ligthningStrike.prefab using Guid(25e06b9ace905254fb51460164c8481b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'badbe9fea5d1295de12ea462770f7c15') in 0.007034083 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 28
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/ysy/powup_speed-Sheet.png
-  artifactKey: Guid(a40aeced308105747b6e5254e377d66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/powup_speed-Sheet.png using Guid(a40aeced308105747b6e5254e377d66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b8295b2f43b985a8bf9b5baa81866be4') in 0.005725416 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/ysy/overdrive_symbol-Sheet.png
-  artifactKey: Guid(3a98d80fd3f12e34b89f11d63aab10b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/overdrive_symbol-Sheet.png using Guid(3a98d80fd3f12e34b89f11d63aab10b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ebdff4877d5fe91a4b0edc9b9ea23c6a') in 0.006166084 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.109412 seconds.
-  path: Assets/ysy/PowUpLightning.prefab
-  artifactKey: Guid(48fe5f0d20fb154439ef6ff2782d6a3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/PowUpLightning.prefab using Guid(48fe5f0d20fb154439ef6ff2782d6a3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '94fee93dfa351d727b0f32016086c2b5') in 0.005143458 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 39
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/ysy/shipYSY.prefab
-  artifactKey: Guid(b4d151d027f06d84ea6bdb7155f30510) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/shipYSY.prefab using Guid(b4d151d027f06d84ea6bdb7155f30510) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c88d9ff7e0d390da3c310686204accc4') in 0.12168475 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 115
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/ysy/shark.prefab
-  artifactKey: Guid(9c05f22d837d12d4c98fd98cf22f9adf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/shark.prefab using Guid(9c05f22d837d12d4c98fd98cf22f9adf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7671582231b5bfc110fd6aa8d06b62ee') in 0.004965625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 25
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.110582 seconds.
-  path: Assets/ysy/vortex.png
-  artifactKey: Guid(d423187473648834e93f38551b719625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/vortex.png using Guid(d423187473648834e93f38551b719625) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6535b34b07a57fdf8594c7103bd3e0a2') in 0.010117875 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/ysy/vortexAppear-Sheet.png
-  artifactKey: Guid(87dad0071cacfd54ab4d05e0a0cfe2bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/vortexAppear-Sheet.png using Guid(87dad0071cacfd54ab4d05e0a0cfe2bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fe492a4352c684060211069ae23c68f1') in 0.010059291 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.059539 seconds.
-  path: Assets/ysy/vortexDisappear-Sheet.png
-  artifactKey: Guid(7caef6c0b0b1f7a43a5f3689122dfe9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/vortexDisappear-Sheet.png using Guid(7caef6c0b0b1f7a43a5f3689122dfe9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ea78fc2ce395c8ad4ee9e4155c79c311') in 0.014200667 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/ysy/vortexObj.prefab
-  artifactKey: Guid(6d6bcdd0babfe85499995e1e68724951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/vortexObj.prefab using Guid(6d6bcdd0babfe85499995e1e68724951) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bffc419415812d512878c9eaa4d357af') in 0.00606175 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 39
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/ysy/vortexPU.prefab
-  artifactKey: Guid(cd1193b121db3db4d96ea43bd0ccd987) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ysy/vortexPU.prefab using Guid(cd1193b121db3db4d96ea43bd0ccd987) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '17e970081e601d66814a96626e926cce') in 0.004793792 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 53
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-Thread 0x16f197000 may have been prematurely finalized
-- Loaded All Assemblies, in  0.344 seconds
-Refreshing native plugins compatible for Editor in 0.18 ms, found 1 plugins.
-Native extension for OSXStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.400 seconds
-Domain Reload Profiling: 745ms
-	BeginReloadAssembly (104ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (30ms)
-	RebuildCommonClasses (22ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (10ms)
-	LoadAllAssembliesAndSetupDomain (200ms)
-		LoadAssemblies (137ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (92ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (79ms)
-			ResolveRequiredComponents (6ms)
-	FinalizeReload (400ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (317ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (1ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (94ms)
-			ProcessInitializeOnLoadAttributes (182ms)
-			ProcessInitializeOnLoadMethodAttributes (36ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-Refreshing native plugins compatible for Editor in 0.31 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6262 unused Assets / (3.0 MB). Loaded Objects now: 7132.
-Memory consumption went from 158.2 MB to 155.2 MB.
-Total: 7.154291 ms (FindLiveObjects: 0.384250 ms CreateObjectMapping: 0.161334 ms MarkObjects: 5.272125 ms  DeleteObjects: 1.336375 ms)
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6259 unused Assets / (4.0 MB). Loaded Objects now: 7094.
+Memory consumption went from 155.8 MB to 151.8 MB.
+Total: 24.392500 ms (FindLiveObjects: 1.381200 ms CreateObjectMapping: 0.958500 ms MarkObjects: 17.715300 ms  DeleteObjects: 4.333700 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

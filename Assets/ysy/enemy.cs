@@ -84,7 +84,21 @@ public class enemy : MonoBehaviour
             ShipHealth shipHealth = other.GetComponent<ShipHealth>();
         
             if(GetComponent<state>().isFrozen == false && GameManager.Instance.IsInvincible == false && GameManager.Instance.IsUntouchable == false)
-                shipHealth.TakeDamage(damageAmount);
+            {
+                
+                shipHealth.TakeDamage(damageAmount);    
+
+                Vector3 knockDir =
+                    transform.position + other.transform.position;
+
+                ShipMovement move = GameManager.Instance.ship.GetComponent<ShipMovement>();
+                if (move != null)
+                {
+                    move.ApplyKnockback(knockDir, GameManager.Instance.knockbackForce, GameManager.Instance.knockbackDuration);
+                }
+
+            }
+                
             else if(GetComponent<state>().isFrozen)
             {
                 Instantiate(GameManager.Instance.IceCollideEffect, transform.position,Quaternion.identity);

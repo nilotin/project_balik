@@ -31,20 +31,37 @@ public class PowerUpCaster : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
+        if (Keyboard.current == null)
         {
-            UseSlot1();
+            return;
         }
+
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            UseSlot(0);
+        }
+        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            UseSlot(1);
+        }
+        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            UseSlot(2);
+        }
+
+        // İstersen numpad de ekleyebilirsin:
+        // if (Keyboard.current.numpad1Key.wasPressedThisFrame) UseSlot(0);
     }
 
-    void UseSlot1()
+    void UseSlot(int slotIndex)
     {
         if (inventory == null)
         {
             return;
         }
 
-        string powerUp = inventory.PeekFirst();
+        string powerUp = inventory.PeekAt(slotIndex);
+
         if (string.IsNullOrEmpty(powerUp))
         {
             return;
@@ -52,10 +69,9 @@ public class PowerUpCaster : MonoBehaviour
 
         bool casted = Cast(powerUp);
 
-        // Cast başarılıysa envanterden düşür (kaydırma otomatik)
         if (casted)
         {
-            inventory.ConsumeFirst();
+            inventory.ConsumeAt(slotIndex);
         }
     }
 
@@ -72,7 +88,7 @@ public class PowerUpCaster : MonoBehaviour
                 return true;
 
             case "lightning":
-                FireFromScreenCenter(lightningPrefab);
+                GetComponent<lightningPow>().StartCoroutine(GetComponent<lightningPow>().ChainLightning(transform.position));
                 return true;
 
             default:
@@ -88,7 +104,7 @@ public class PowerUpCaster : MonoBehaviour
             return;
         }
 
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, (Screen.height / 2f), 0f);
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
         Ray ray = cam.ScreenPointToRay(screenCenter);
 
         Vector3 spawnPos = cam.transform.position + ray.direction * spawnForward;
@@ -98,7 +114,9 @@ public class PowerUpCaster : MonoBehaviour
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         if (rb != null)
         {
+            // Unity 6 -> linearVelocity, Unity 2021/2022 -> velocity
             rb.linearVelocity = ray.direction * shootForce;
+            // rb.linearVelocity = ray.direction * shootForce;
         }
     }
 }

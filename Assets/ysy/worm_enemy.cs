@@ -88,14 +88,20 @@ public class worm_enemy : MonoBehaviour
         
             if (shipHealth != null)
             {
-                if(GetComponent<state>().isFrozen == false)
+                if(GetComponent<state>().isFrozen == false && GameManager.Instance.IsInvincible == false && GameManager.Instance.IsUntouchable == false)
                     shipHealth.TakeDamage(damageAmount);
-                else if(GameManager.Instance.IsUntouchable)
-                {;}
-                else
+                else if(GetComponent<state>().isFrozen)
                 {
+                    Instantiate(GameManager.Instance.IceCollideEffect, transform.position,Quaternion.identity);
                     int cur = GameManager.Instance.GetCurrency();
-                    GameManager.Instance.SetCurrency(cur+7);
+                    GameManager.Instance.SetCurrency(cur+4);
+                    Destroy(gameObject); 
+                }
+                else if(GameManager.Instance.IsInvincible)
+                {
+                    //Instantiate(GameManager.Instance.collideEffect, transform.position,Quaternion.identity);
+                    int cur = GameManager.Instance.GetCurrency();
+                    GameManager.Instance.SetCurrency(cur+4);
                     Destroy(gameObject); 
                 }
                     

@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class powUpLightning : MonoBehaviour
+public class lightningPow : MonoBehaviour
 {
-    [Header("Pickup")]
-    public Collider col;
-    public GameObject spriteObject;
+
 
     [Header("Targeting")]
     public string enemyTag = "shark";     // senin shark tag'in neyse birebir yaz
@@ -18,38 +16,24 @@ public class powUpLightning : MonoBehaviour
     [Header("Effect")]
     public bool destroyOnHit = true;      // TRUE: öldür, FALSE: stun
     public float stunSeconds = 1.5f;      // destroyOff iken kullanılır
+    public GameObject lightning;
 
-    private void Reset()
-    {
-        // otomatik doldursun diye
-        if (col == null) col = GetComponent<Collider>();
-        if (spriteObject == null && transform.childCount > 0) spriteObject = transform.GetChild(0).gameObject;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("ship"))
-        {
-            if (col == null) col = GetComponent<Collider>();
-            if (col != null) col.enabled = false;
-
-            if (spriteObject != null) spriteObject.SetActive(false);
-
-            StartCoroutine(ChainLightning(other.transform.position));
-        }
-    }
-
-    private IEnumerator ChainLightning(Vector3 origin)
+    public IEnumerator ChainLightning(Vector3 origin)
     {
         HashSet<enemy> hit = new HashSet<enemy>();
-
         enemy current = FindClosestEnemy(origin, firstTargetRange, hit);
+        Vector3 spawnPoint = current.transform.position;
+        spawnPoint.y+=1f;
+        Instantiate(lightning,spawnPoint ,Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
+
 
         int count = 0;
 
-        while (current != null && count < maxChains)
+       while (current != null && count < maxChains)
         {
-            // vur
+            Vector3 lastPos = current.transform.position; // ✅ destroy öncesi snapshot
+
             HitEnemy(current);
             hit.Add(current);
             count++;
@@ -57,9 +41,9 @@ public class powUpLightning : MonoBehaviour
             if (hitDelay > 0f)
                 yield return new WaitForSeconds(hitDelay);
 
-            // bir sonraki hedefi son vurulanın pozisyonundan ara
-            current = FindClosestEnemy(current.transform.position, jumpRange, hit);
+            current = FindClosestEnemy(lastPos, jumpRange, hit); // ✅ artık current'a dokunmuyor
         }
+
     }
 
     private enemy FindClosestEnemy(Vector3 from, float range, HashSet<enemy> ignore)

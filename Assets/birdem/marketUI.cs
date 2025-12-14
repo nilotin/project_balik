@@ -79,7 +79,7 @@ public class MarketUI : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.SetCurrency(100);
+        //GameManager.Instance.SetCurrency(100);
         ResetAllPowerUpLevelsForTest(); // <-- TEST İÇİN
         Refresh();
     }

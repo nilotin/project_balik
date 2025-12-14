@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public float knockbackForce = 10f;
     public float knockbackDuration = 0.2f;
 
+    private const string CURRENCY_KEY = "CURRENCY";
+
 
 
     public static GameManager Instance
@@ -42,8 +44,12 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        currency = PlayerPrefs.GetInt(CURRENCY_KEY, currency); 
+
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        
     }
 
 
@@ -69,6 +75,15 @@ public class GameManager : MonoBehaviour
     public void SetCurrency(int c)
     {
         currency = c;
+        PlayerPrefs.SetInt(CURRENCY_KEY, currency);
+        PlayerPrefs.Save();
+    }
+
+    public bool TrySpendCurrency(int amount)
+    {
+        if (currency < amount) return false;
+        SetCurrency(currency - amount);
+        return true;
     }
 
     public int FrostChargePrice()
@@ -79,7 +94,6 @@ public class GameManager : MonoBehaviour
     {
         return OverdrivePriceCur;
     }  
-<<<<<<< HEAD
 
     public int LightningPrice()
     {
@@ -90,7 +104,6 @@ public class GameManager : MonoBehaviour
     {
         return VortexPriceCur;
     }
-=======
     
     public void AddCurrency(int amount)
     {
@@ -105,5 +118,4 @@ public class GameManager : MonoBehaviour
         currencyText.text = currency.ToString();
     }
 
->>>>>>> bc1002fbef07c059b13e8af8eba7ea11dfcc380c
 }

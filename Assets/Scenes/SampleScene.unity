@@ -1946,6 +1946,7 @@ MonoBehaviour:
   IceCollideEffect: {fileID: 5597016940700737107, guid: a56ff78ed056aab4fa9fbd2c7cc1bd47, type: 3}
   knockbackForce: 10
   knockbackDuration: 0.2
+  currencyText: {fileID: 1329815290}
 --- !u!4 &2124465568
 Transform:
   m_ObjectHideFlags: 0

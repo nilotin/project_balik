@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MerchantCatBehaviour : MonoBehaviour
 {
@@ -11,15 +10,19 @@ public class MerchantCatBehaviour : MonoBehaviour
     [Header("Interaction UI")]
     public GameObject pressEUI;
 
-    [Header("Market")]
-    public GameObject marketCanvas;
-    public ShipMovement shipMovement;
-
-    private bool shipInRange = false;
-    private bool marketOpen = false;
+    private MarketCanvasController marketController;
+    private bool shipInRange;
 
     void Start()
     {
+        // Prefab-safe: scene içinden market controller bul
+        marketController = FindObjectOfType<MarketCanvasController>();
+        if (marketController == null)
+        {
+            Debug.LogError("MarketCanvasController not found in scene!");
+        }
+
+        // Prefab-safe: ship'i tag ile bul
         if (ship == null)
         {
             GameObject found = GameObject.FindGameObjectWithTag(shipTag);
@@ -27,44 +30,13 @@ public class MerchantCatBehaviour : MonoBehaviour
                 ship = found.transform;
         }
 
-        if (shipMovement == null && ship != null)
-            shipMovement = ship.GetComponent<ShipMovement>();
-
         if (pressEUI != null)
             pressEUI.SetActive(false);
-
-        if (marketCanvas != null)
-            marketCanvas.SetActive(false);
     }
 
     void LateUpdate()
     {
-        if (shipMovement == null && ship != null)
-        {
-            shipMovement = ship.GetComponent<ShipMovement>();
-        }
-
         FaceShip();
-
-        // 🔥 MARKET AÇIKKEN — KONUMDAN BAĞIMSIZ
-        if (marketOpen)
-        {
-            if (Keyboard.current != null &&
-                (Keyboard.current.eKey.wasPressedThisFrame ||
-                 Keyboard.current.escapeKey.wasPressedThisFrame))
-            {
-                CloseMarket();
-            }
-            return;
-        }
-
-        // 🔹 MARKET KAPALIYKEN — SADECE YAKINDAYSA AÇ
-        if (shipInRange &&
-            Keyboard.current != null &&
-            Keyboard.current.eKey.wasPressedThisFrame)
-        {
-            OpenMarket();
-        }
     }
 
     void FaceShip()
@@ -79,7 +51,6 @@ public class MerchantCatBehaviour : MonoBehaviour
 
         Quaternion lookRot = Quaternion.LookRotation(dir);
 
-        // 🔥 PARENT NULL KORUMASI
         if (transform.parent != null)
         {
             transform.localRotation =
@@ -91,59 +62,26 @@ public class MerchantCatBehaviour : MonoBehaviour
         }
     }
 
-
-    void OpenMarket()
-    {
-        if (shipMovement == null)
-        {
-            Debug.LogError("ShipMovement NULL — market açılmadı");
-            return;
-        }
-
-        marketOpen = true;
-
-        if (pressEUI != null)
-            pressEUI.SetActive(false);
-
-        if (marketCanvas != null)
-            marketCanvas.SetActive(true);
-
-        shipMovement.enabled = false;
-    }
-
-
-    public void CloseMarket()
-    {
-        marketOpen = false;
-
-        if (marketCanvas != null)
-            marketCanvas.SetActive(false);
-
-        if (shipMovement != null)
-            shipMovement.enabled = true;
-
-        // Yakındaysa E tekrar görünsün
-        if (shipInRange && pressEUI != null)
-            pressEUI.SetActive(true);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(shipTag)) return;
 
-        shipInRange = true;
-
-        if (!marketOpen && pressEUI != null)
+        if (pressEUI != null)
             pressEUI.SetActive(true);
+
+        if (marketController != null)
+            marketController.SetPlayerInRange(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag(shipTag)) return;
 
-        shipInRange = false;
-
         if (pressEUI != null)
             pressEUI.SetActive(false);
+
+        if (marketController != null)
+            marketController.SetPlayerInRange(false);
     }
+
 }

@@ -308,7 +308,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c889fd55ff06147eeab39bcfb9bf8180, type: 3}
   m_Name: 
-<<<<<<< HEAD
   m_EditorClassIdentifier: Assembly-CSharp::ShipHealth
   maxHealth: 3
 --- !u!114 &43518039
@@ -373,10 +372,6 @@ MonoBehaviour:
   lightning: {fileID: 8283823355432563973, guid: 25e06b9ace905254fb51460164c8481b, type: 3}
   lightningLinePrefab: {fileID: 3166461372547645368, guid: 9a552f66944cb614b8ef1184066bcc41, type: 3}
   lineLifeTime: 0.15
-=======
-  m_EditorClassIdentifier: Assembly-CSharp::FishCurrency
-  fishText: {fileID: 1329815290}
->>>>>>> 08ec19c66bbcf77f913d627ef9c4a645111345c1
 --- !u!1001 &326697333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1849,15 +1844,9 @@ MonoBehaviour:
   fogStrength: 0.6
   powerUpPrefabs:
   - {fileID: 7401029315344581936, guid: 36f9a8479dfed1344a868227274d8e3b, type: 3}
-<<<<<<< HEAD
   - {fileID: 7852268149353461370, guid: 63799e34157787c479a8b4dda935bafa, type: 3}
   - {fileID: 318979412807782355, guid: 48fe5f0d20fb154439ef6ff2782d6a3e, type: 3}
   - {fileID: 8545019306264863144, guid: cd1193b121db3db4d96ea43bd0ccd987, type: 3}
-=======
-  - {fileID: 318979412807782355, guid: 48fe5f0d20fb154439ef6ff2782d6a3e, type: 3}
-  - {fileID: 7852268149353461370, guid: 63799e34157787c479a8b4dda935bafa, type: 3}
-  - {fileID: 1896020213683401470, guid: 517e57c4f3a20694296448072199aad3, type: 3}
->>>>>>> 08ec19c66bbcf77f913d627ef9c4a645111345c1
   enemyPrefabs:
   - {fileID: 6793530407499020542, guid: 9c05f22d837d12d4c98fd98cf22f9adf, type: 3}
   - {fileID: 6793040787934754305, guid: 7fd0770249028fd4bb441c84f1961738, type: 3}

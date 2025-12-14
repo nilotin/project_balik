@@ -30,8 +30,15 @@ public class ShipHealth : MonoBehaviour
     {
         if (currentHealth <= 0) return; // Zaten ölmüşse hasar almasın.
 
+        // 🔒 Eğer dokunulmazlık varsa damage ve ses yok
+        if (GameManager.Instance != null && GameManager.Instance.IsInvincible)
+            return;
+
         currentHealth -= damage;
-        
+
+        // 🔊 DAMAGE SESİ (TAM YERİ)
+        SoundManager.Instance?.PlayDamage();
+
         // UI'ı bilgilendir
         OnHealthChanged?.Invoke(currentHealth);
 

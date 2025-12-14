@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
 
         currency = PlayerPrefs.GetInt(CURRENCY_KEY, currency); 
-
+        SoundManager.Instance?.PlayAmbience();
 
         Instance = this;
         

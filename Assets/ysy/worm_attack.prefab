@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5567771719583707617}
   - component: {fileID: 1170223930776520245}
   - component: {fileID: 6110772949877755096}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: worm_attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

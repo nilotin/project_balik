@@ -41,9 +41,9 @@ public class OceanChunkManager : MonoBehaviour
     [Tooltip("Geminin önünde kaç karo oluşturulacak.")]
     public int forwardTiles = 10;
     [Tooltip("Geminin arkasında kaç karo oluşturulacak.")]
-    public int backwardTiles = 2;
+    public int backwardTiles = 10;
     [Tooltip("Yana doğru maksimum kaç karo oluşturulacak (ilerledikçe genişler).")]
-    public int maxSideTiles = 5;
+    public int maxSideTiles = 10;
 
     [Header("3. Visuals (Depth / Fog)")]
     [Tooltip("Sığ sulardaki renk.")]
@@ -60,14 +60,16 @@ public class OceanChunkManager : MonoBehaviour
     // Not: Balık prefabları artık raritySettings içinde yönetiliyor
     public GameObject[] powerUpPrefabs;
     public GameObject[] enemyPrefabs;
+    public GameObject[] merchantCat;
 
     [Header("5. Spawn Chances (0–1)")]
     [Tooltip("Balık spawnlanma olasılığı (Nadirliğe geçmeden önceki ana şans).")]
-    public float fishChance = 1f;
+    public float fishChance = 0.05f;
     [Tooltip("Power-up spawnlanma olasılığı.")]
     public float powerUpChance = 0f;
     [Tooltip("Düşman spawnlanma olasılığı.")]
     public float enemyChance = 0f;
+    public float merchantChance = 0.01f;
 
     [Header("6. Fish Rarity & Distance")]
     [Tooltip("Balık nadirlik seviyelerinin ayarları (Ortak, Nadir, Efsanevi).")]
@@ -88,6 +90,7 @@ public class OceanChunkManager : MonoBehaviour
     private const string FISH_POINT = "FishSpawnPoint";
     private const string POWERUP_POINT = "PowerUpSpawnPoint";
     private const string ENEMY_POINT = "EnemySpawnPoint";
+    private const string CAT_POINT = "CatSpawnPoint";
     private const string CONTENT_CONTAINER = "Content";
 
     // =================================================================================
@@ -255,6 +258,16 @@ public class OceanChunkManager : MonoBehaviour
                 if (point != null && point.childCount == 0)
                 {
                     SpawnGenericContentAt(content, POWERUP_POINT, powerUpPrefabs);
+                    continue;
+                }
+            }
+            
+            else if (merchantCat.Length > 0 && Random.value < merchantChance)
+            {
+                Transform point = content.Find(CAT_POINT);
+                if (point != null && point.childCount == 0)
+                {
+                    SpawnGenericContentAt(content, CAT_POINT, merchantCat);
                     continue;
                 }
             }

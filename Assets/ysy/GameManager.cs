@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -75,4 +76,18 @@ public class GameManager : MonoBehaviour
     {
         return OverdrivePriceCur;
     }  
+    
+    public void AddCurrency(int amount)
+    {
+        currency += amount;
+        UpdateCurrencyUI();
+    }
+
+    [SerializeField] private TMP_Text currencyText;
+
+    void UpdateCurrencyUI()
+    {
+        currencyText.text = currency.ToString();
+    }
+
 }

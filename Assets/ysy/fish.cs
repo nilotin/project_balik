@@ -8,27 +8,39 @@ public class fish : MonoBehaviour
 
     void Start()
     {
-        if(rarity == Rarity.Common)
-            spriteRenderer.sprite = fishes[0];
-        else if(rarity == Rarity.Rare)
-            spriteRenderer.sprite = fishes[1];
-        else
-            spriteRenderer.sprite = fishes[2];
+        switch (rarity)
+        {
+            case Rarity.Common:
+                spriteRenderer.sprite = fishes[0];
+                break;
+            case Rarity.Rare:
+                spriteRenderer.sprite = fishes[1];
+                break;
+            case Rarity.Legandary:
+                spriteRenderer.sprite = fishes[2];
+                break;
+        }
     }
- 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ship"))
-        {
-            int currentCurrency = GameManager.Instance.GetCurrency();
-            if(rarity == Rarity.Common)
-                GameManager.Instance.SetCurrency(currentCurrency+1);
-            else if(rarity == Rarity.Rare)
-                GameManager.Instance.SetCurrency(currentCurrency+3);
-            else
-                GameManager.Instance.SetCurrency(currentCurrency+5);
-        }
+        if (!other.CompareTag("ship")) return;
+
+        int value = GetFishValue();
+        GameManager.Instance.AddCurrency(value);
+
         Destroy(gameObject);
+    }
+
+    int GetFishValue()
+    {
+        switch (rarity)
+        {
+            case Rarity.Common: return 1;
+            case Rarity.Rare: return 3;
+            case Rarity.Legandary: return 5;
+            default: return 1;
+        }
     }
 }
 
@@ -38,4 +50,3 @@ public enum Rarity
     Rare,
     Legandary
 }
-

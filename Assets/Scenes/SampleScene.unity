@@ -219,68 +219,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8475787225756865596, guid: 978e754ca99984123a568c33acbaa525, type: 3}
   m_PrefabInstance: {fileID: 5872408224266564584}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &43518039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43518030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 695c6f32ed16937459f1301d404b970d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::powUpSpeed
-  impulseStrength: 40
-  impulseDuration: 1
-  invincibleDuration: 1
---- !u!114 &43518040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43518030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43019953ecfc5f47a49128dafeea082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PowerUpCaster
-  cam: {fileID: 0}
-  inventory: {fileID: 0}
-  iceBombPrefab: {fileID: 3910812050488793076, guid: 39a109e44ff17724cb023be8f25e3500, type: 3}
-  vortexPrefab: {fileID: 2181603500648626631, guid: 6d6bcdd0babfe85499995e1e68724951, type: 3}
-  lightningPrefab: {fileID: 0}
-  shootForce: 12
-  spawnForward: 1.5
-  spawnDistance: 7
-  spawnYOffset: 0
-  lockYToShip: 1
---- !u!114 &43518041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43518030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c020359f90332b947bfcba4690a5258c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::lightningPow
-  enemyTags:
-  - shark
-  - worm
-  - leviathan
-  firstTargetRange: 12
-  jumpRange: 8
-  maxChains: 3
-  hitDelay: 0.07
-  destroyOnHit: 1
-  stunSeconds: 1.5
-  lightning: {fileID: 8283823355432563973, guid: 25e06b9ace905254fb51460164c8481b, type: 3}
-  lightningLinePrefab: {fileID: 3166461372547645368, guid: 9a552f66944cb614b8ef1184066bcc41, type: 3}
-  lineLifeTime: 0.15
 --- !u!1 &200329016
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1222, y: 687}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &200329018
@@ -1746,7 +1684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1659270939
@@ -2008,7 +1946,7 @@ MonoBehaviour:
   IceCollideEffect: {fileID: 5597016940700737107, guid: a56ff78ed056aab4fa9fbd2c7cc1bd47, type: 3}
   knockbackForce: 20
   knockbackDuration: 0.4
-  currencyText: {fileID: 0}
+  currencyText: {fileID: 1329815290}
 --- !u!4 &2124465568
 Transform:
   m_ObjectHideFlags: 0
@@ -2153,6 +2091,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship
       objectReference: {fileID: 0}
+    - target: {fileID: 6169659802685478692, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: vortexPrefab
+      value: 
+      objectReference: {fileID: 2181603500648626631, guid: 6d6bcdd0babfe85499995e1e68724951, type: 3}
+    - target: {fileID: 6169659802685478692, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: iceBombPrefab
+      value: 
+      objectReference: {fileID: 3910812050488793076, guid: 39a109e44ff17724cb023be8f25e3500, type: 3}
+    - target: {fileID: 6169659802685478692, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: spawnDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923356571338183389, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: impulseDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923356571338183389, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: impulseStrength
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923356571338183389, guid: 978e754ca99984123a568c33acbaa525, type: 3}
+      propertyPath: invincibleDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8199619531171395837, guid: 978e754ca99984123a568c33acbaa525, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2200,16 +2162,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2087732740837941862, guid: 978e754ca99984123a568c33acbaa525, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 43518039}
-    - targetCorrespondingSourceObject: {fileID: 2087732740837941862, guid: 978e754ca99984123a568c33acbaa525, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 43518040}
-    - targetCorrespondingSourceObject: {fileID: 2087732740837941862, guid: 978e754ca99984123a568c33acbaa525, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 43518041}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978e754ca99984123a568c33acbaa525, type: 3}
 --- !u!1001 &7246715937243568446
 PrefabInstance:
